@@ -1,0 +1,8 @@
+C:\School\SWA\DP2\Duckhunt\bin\Debug\duckhunt.exe
+C:\School\SWA\DP2\Duckhunt\bin\Debug\duckhunt.pdb
+C:\School\SWA\DP2\Duckhunt\obj\Debug\Duckhunt.csprojResolveAssemblyReference.cache
+C:\School\SWA\DP2\Duckhunt\obj\Debug\duckhunt.Form1.resources
+C:\School\SWA\DP2\Duckhunt\obj\Debug\duckhunt.Properties.Resources.resources
+C:\School\SWA\DP2\Duckhunt\obj\Debug\Duckhunt.csproj.GenerateResource.Cache
+C:\School\SWA\DP2\Duckhunt\obj\Debug\duckhunt.exe
+C:\School\SWA\DP2\Duckhunt\obj\Debug\duckhunt.pdb

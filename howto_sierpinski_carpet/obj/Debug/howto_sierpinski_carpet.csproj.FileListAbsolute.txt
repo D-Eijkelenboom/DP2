@@ -1,0 +1,8 @@
+C:\School\SWA\DP2\howto_sierpinski_carpet\bin\Debug\howto_sierpinski_carpet.exe
+C:\School\SWA\DP2\howto_sierpinski_carpet\bin\Debug\howto_sierpinski_carpet.pdb
+C:\School\SWA\DP2\howto_sierpinski_carpet\obj\Debug\howto_sierpinski_carpet.csprojResolveAssemblyReference.cache
+C:\School\SWA\DP2\howto_sierpinski_carpet\obj\Debug\howto_sierpinski_carpet.Form1.resources
+C:\School\SWA\DP2\howto_sierpinski_carpet\obj\Debug\howto_sierpinski_carpet.Properties.Resources.resources
+C:\School\SWA\DP2\howto_sierpinski_carpet\obj\Debug\howto_sierpinski_carpet.csproj.GenerateResource.Cache
+C:\School\SWA\DP2\howto_sierpinski_carpet\obj\Debug\howto_sierpinski_carpet.exe
+C:\School\SWA\DP2\howto_sierpinski_carpet\obj\Debug\howto_sierpinski_carpet.pdb
