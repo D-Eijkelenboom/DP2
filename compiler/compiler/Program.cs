@@ -12,7 +12,8 @@ namespace compiler
     {
         static void Main(string[] args)
         {
-            Compiler compiler = new Compiler(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "//snippets//example.txt");
+            string[] lines = File.ReadAllLines(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "//snippets//example.txt");
+            Tokenizer tokenizer = new Tokenizer(lines);
         }
     }
 }

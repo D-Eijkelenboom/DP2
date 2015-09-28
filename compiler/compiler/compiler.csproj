@@ -41,7 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractFunctionCallNode.cs" />
+    <Compile Include="CompileDoWhile.cs" />
+    <Compile Include="CompileFunction.cs" />
+    <Compile Include="CompileIf.cs" />
+    <Compile Include="CompileIfElse.cs" />
+    <Compile Include="CompileIfGeneral.cs" />
+    <Compile Include="CompileMinus.cs" />
+    <Compile Include="CompileOperator.cs" />
+    <Compile Include="CompilePlus.cs" />
+    <Compile Include="CompileProduct.cs" />
     <Compile Include="Compiler.cs" />
+    <Compile Include="CompileValue.cs" />
+    <Compile Include="CompileWhile.cs" />
+    <Compile Include="ConditionalJump.cs" />
+    <Compile Include="DirectFunctionCallNode.cs" />
+    <Compile Include="DoNothingNode.cs" />
+    <Compile Include="FunctionCallNode.cs" />
+    <Compile Include="JumpNode.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Syntax.cs" />

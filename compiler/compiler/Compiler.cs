@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Compiler;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,10 +10,18 @@ namespace compiler
 {
     class Compiler
     {
-        public Compiler(string path)
+        public Compiler()
         {
-            string[] lines = File.ReadAllLines(path);
-            Tokenizer tokenizer = new Tokenizer(lines);
+            
+        }
+
+        public void compile()
+        {
+        }
+
+        public Token getLastToken()
+        {
+            return null;
         }
     }
 }
