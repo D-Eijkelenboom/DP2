@@ -8,5 +8,10 @@ namespace compiler
 {
     class DoNothingNode : Node
     {
+        public override Node Execute()
+        {
+
+            return this;
+        }
     }
 }

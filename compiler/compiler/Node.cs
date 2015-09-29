@@ -8,6 +8,11 @@ namespace compiler
 {
     class Node
     {
+        public Node(Node next)
+        {
+            Next = next;
+        }
+        public Node Next { get; set; }
         public virtual Node Execute()
         {
             return null;
