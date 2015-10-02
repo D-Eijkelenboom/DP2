@@ -68,13 +68,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\UnitType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Unit.cs" />
+    <Compile Include="Model\BehaviourFactory.cs" />
+    <Compile Include="Model\DrawBehaviour.cs" />
+    <Compile Include="Model\DrawContainer.cs" />
+    <Compile Include="Model\Units\DuckMedium.cs" />
+    <Compile Include="Model\LineMoveBehaviour.cs" />
+    <Compile Include="Model\Units\DuckEasy.cs" />
+    <Compile Include="Model\Game.cs" />
+    <Compile Include="Model\Levels\Level.cs" />
+    <Compile Include="Model\Levels\Level1.cs" />
+    <Compile Include="Model\MoveBehaviour.cs" />
+    <Compile Include="Model\MoveContainer.cs" />
+    <Compile Include="Model\StraightMoveBehaviour.cs" />
+    <Compile Include="Model\Units\Unit.cs" />
+    <Compile Include="Model\Units\UnitFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -90,6 +104,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

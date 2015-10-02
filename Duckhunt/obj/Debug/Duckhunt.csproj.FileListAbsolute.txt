@@ -6,3 +6,4 @@ C:\School\SWA\DP2\Duckhunt\obj\Debug\duckhunt.Properties.Resources.resources
 C:\School\SWA\DP2\Duckhunt\obj\Debug\Duckhunt.csproj.GenerateResource.Cache
 C:\School\SWA\DP2\Duckhunt\obj\Debug\duckhunt.exe
 C:\School\SWA\DP2\Duckhunt\obj\Debug\duckhunt.pdb
+C:\School\SWA\DP2\Duckhunt\bin\Debug\duckhunt.exe.config
