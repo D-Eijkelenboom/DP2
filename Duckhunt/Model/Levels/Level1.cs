@@ -16,7 +16,6 @@ namespace duckhunt.Model
         {
             for (int i = 0; i < Properties.Settings.Default.AmountOfUnits; i++ )
             {
-                Units.Add(new DuckEasy(MoveContainer, DrawContainer, BehaviourFactory));
                 Units.Add(new DuckMedium(MoveContainer, DrawContainer, BehaviourFactory));
             }
             

@@ -78,6 +78,7 @@
     <Compile Include="Model\BehaviourFactory.cs" />
     <Compile Include="Model\DrawBehaviour.cs" />
     <Compile Include="Model\DrawContainer.cs" />
+    <Compile Include="Model\Levels\Level2.cs" />
     <Compile Include="Model\Units\DuckMedium.cs" />
     <Compile Include="Model\LineMoveBehaviour.cs" />
     <Compile Include="Model\Units\DuckEasy.cs" />
