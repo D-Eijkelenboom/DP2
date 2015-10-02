@@ -8,5 +8,16 @@ namespace compiler
 {
     class AbstractFunctionCallNode : Node
     {
+        public List<string> Parameters { get; set; }
+
+        "x = 2;"
+
+        DirectFunctionCallNode ["C2R", "2"]
+       DirectFunctionCallNode ["R2V", "x"]
+
+        "x = Add(y, z);"
+
+        FunctionCallNode ["Add", "y", "z"]
+        DirectFunctionCallNode ["R2V", "x"]
     }
 }

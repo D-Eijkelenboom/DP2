@@ -38,54 +38,8 @@ namespace compiler
             //string[] text = clean(lines);
             tokenize(lines);
         }
-
         
-        //private void parse(string line, int lineNr)
-        //{
-        //    string word = "";
-        //    int posNr = 0;
-
-        //    for(int i = 0; i < line.Length; i++)
-        //    {
-        //        posNr++;
-        //        char c = line[i];
-        //        if (Syntax.isNumber(c))
-        //        {
-        //            word = word + c;
-
-        //            while (Syntax.isNumber(line[i + 1]))
-        //            {
-        //                word = word + line[i + 1];
-        //                posNr++;
-        //                i++;
-        //            }
-        //            tokens.Add(new Token(lineNr, posNr, TokenType.NUMBER, int.Parse(word), level , -1));
-        //        }
-        //        if (c.Equals('{'))
-        //        {
-        //            level++;
-        //            needsClosure.Push(TokenType.BRACKETOPEN);
-        //        }
-        //        if (c.Equals('}'))
-        //        {
-        //            level--;
-        //            if (needsClosure.Pop() != TokenType.BRACKETOPEN && needsClosure.Pop() != TokenType.IF)
-        //            {
-        //                Console.WriteLine("Fout! } not found");
-        //            }
-        //        }
-        //        if (c.Equals('('))
-        //        {
-
-        //        }
-        //        if (c.Equals(')'))
-        //        {
-
-        //        }
-        //    }
-        //}
-        
-        private void tokenize(string[] lines)
+        private List<Token> tokenize(string[] lines)
         {
             int posNr = 0;
             int lineNr = 0;
@@ -218,6 +172,7 @@ namespace compiler
                     posNr = posNr + words[i].Length + 1;
                 }                                
             }
+            return tokens;
         }
 
         private string[] clean(string[] lines)

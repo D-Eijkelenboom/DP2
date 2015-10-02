@@ -10,7 +10,7 @@ namespace compiler
     {
         public override Node Execute()
         {
-
+            Next.Execute();
             return this;
         }
     }
