@@ -8,10 +8,10 @@ namespace DuckHunt.Model.Entity
 		public static Entity createEntity(EntityType entity)
 		{
 			var entityAttribute = entity.GetAttribute<EntityInfoAttribute>();
+			
 			if (entityAttribute == null)
-			{
 				return null;
-			}
+
 			var type = entityAttribute.Type;
 			Entity result = Activator.CreateInstance(type) as Entity;
 			return result;
@@ -20,10 +20,10 @@ namespace DuckHunt.Model.Entity
 		public static Entity createEntity(EntityType entity, double x, double y)
 		{
 			var entityAttribute = entity.GetAttribute<EntityInfoAttribute>();
+			
 			if (entityAttribute == null)
-			{
 				return null;
-			}
+
 			var type = entityAttribute.Type;
 			Entity result = Activator.CreateInstance(type) as Entity;
 			result.X = x;
@@ -34,10 +34,10 @@ namespace DuckHunt.Model.Entity
 		public static Bullet createBullet(double x, double y)
 		{
 			var entityAttribute = EntityType.Bullet.GetAttribute<EntityInfoAttribute>();
+			
 			if (entityAttribute == null)
-			{
 				return null;
-			}
+			
 			var type = entityAttribute.Type;
 			Bullet result = Activator.CreateInstance(type, x, y) as Bullet;
 			return result;

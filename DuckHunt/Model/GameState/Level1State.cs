@@ -15,9 +15,7 @@ namespace DuckHunt.Model.GameState
 		public ActionContainer ActionContainer { get; set; }
 
 		public Level1State()
-		{
-
-		}
+		{ }
 
 		public static Level1State Instance()
 		{
@@ -58,9 +56,8 @@ namespace DuckHunt.Model.GameState
 				{
 					this.ActionContainer.TryDequeue(out action);
 					if (action == null)
-					{
 						continue;
-					}
+
 					action.execute();
 				}
 			}
@@ -81,7 +78,6 @@ namespace DuckHunt.Model.GameState
 			this.GSM.GameCanvas.draw(MainContainer[Behaviour.Visible]);
 		}
 
-
 		public void pause()
 		{
 			this.GameController.cleanup();
@@ -91,6 +87,5 @@ namespace DuckHunt.Model.GameState
 		{
 			this.GameController.init();
 		}
-
 	}
 }

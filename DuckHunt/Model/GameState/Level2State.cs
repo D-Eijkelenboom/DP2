@@ -17,9 +17,8 @@ namespace DuckHunt.Model.GameState
 		public static Level2State Instance()
 		{
 			if (instance == null)
-			{
 				instance = new Level2State();
-			}
+
 			return instance;
 		}
 
@@ -51,10 +50,10 @@ namespace DuckHunt.Model.GameState
 				while (this.ActionContainer.Count > 0)
 				{
 					this.ActionContainer.TryDequeue(out action);
+					
 					if (action == null)
-					{
 						continue;
-					}
+
 					action.execute();
 				}
 			}
@@ -85,7 +84,5 @@ namespace DuckHunt.Model.GameState
 		{
 			//throw new NotImplementedException();
 		}
-
-
 	}
 }

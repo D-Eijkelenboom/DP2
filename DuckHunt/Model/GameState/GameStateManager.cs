@@ -45,9 +45,7 @@ namespace DuckHunt.Model.GameState
 		public void pushGameState(GameState gameState)
 		{
 			if (!(GameStates.Count < 1))
-			{
 				GameStates.Peek().pause();
-			}
 
 			GameStates.Push(gameState);
 			GameStates.Peek().init(this);
@@ -62,11 +60,8 @@ namespace DuckHunt.Model.GameState
 			}
 
 			if (!(GameStates.Count < 1))
-			{
 				GameStates.Peek().resume();
-			}
 		}
-
 
 		public void handleInput()
 		{

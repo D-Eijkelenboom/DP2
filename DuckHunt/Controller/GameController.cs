@@ -11,8 +11,7 @@ namespace DuckHunt.Controller
 	{
 		public GameController(GameWindow gameWindow, GameState gameState)
 			: base(gameWindow, gameState)
-		{
-		}
+		{ }
 
 		public override void addListeners()
 		{
@@ -36,6 +35,7 @@ namespace DuckHunt.Controller
 
 			if (e.ChangedButton == MouseButton.Right)
 			{
+				// TODO: BullitTime
 			}
 
 		}

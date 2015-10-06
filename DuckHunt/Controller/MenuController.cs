@@ -8,8 +8,7 @@ namespace DuckHunt.Controller
 	{
 		public MenuController(GameWindow gameWindow, GameState gameState)
 			: base(gameWindow, gameState)
-		{
-		}
+		{ }
 
 		public override void addListeners()
 		{
@@ -27,21 +26,15 @@ namespace DuckHunt.Controller
 		public void MouseDownEvent(object sender, MouseButtonEventArgs e)
 		{
 			if (e.ChangedButton == MouseButton.Left)
-			{
-
-			}
+			{ }
 
 			if (e.ChangedButton == MouseButton.Right)
-			{
-
-			}
+			{ }
 
 		}
 
 		public void KeyDownEvent(object sender, KeyEventArgs e)
-		{
-
-		}
+		{ }
 
 	}
 }

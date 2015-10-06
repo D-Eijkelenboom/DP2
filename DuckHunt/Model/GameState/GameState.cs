@@ -16,6 +16,5 @@ namespace DuckHunt.Model.GameState
 		void handleInput();
 		void update(double dt);
 		void draw();
-
 	}
 }

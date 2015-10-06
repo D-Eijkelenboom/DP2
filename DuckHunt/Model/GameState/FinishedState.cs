@@ -37,9 +37,8 @@ namespace DuckHunt.Model.GameState
 				{
 					this.ActionContainer.TryDequeue(out action);
 					if (action == null)
-					{
 						continue;
-					}
+
 					action.execute();
 				}
 			}

@@ -65,65 +65,50 @@ namespace DuckHunt.Model.Entity
 		{
 			if (isAlive)
 			{
-
 				this.deltaTime = dt;
 				getNextPosition();
+
 				if (slowDownActive)
-				{
 					activateSlowDown();
-				}
+
 				if (speedUpActive)
-				{
 					activateSpeedUp();
-				}
+
 				moveRandomlyDynamic();
 			}
 		}
 
 		#region Movement
-
-
 		public void getNextPosition()
 		{
-
 			if (movingLeft)
 			{
 				dx -= moveSpeed * deltaTime;
 
 				if (dx < -moveSpeed)
-				{
 					dx = -moveSpeed;
-				}
 			}
 			else if (movingRight)
 			{
 				dx += moveSpeed * deltaTime;
 
 				if (dx > moveSpeed)
-				{
 					dx = moveSpeed;
-				}
 			}
 
 			if (movingUp)
 			{
-
 				dy -= moveSpeed * deltaTime;
 
 				if (dy < -moveSpeed)
-				{
 					dy = -moveSpeed;
-				}
 			}
 			else if (movingDown)
 			{
-
 				dy += moveSpeed * deltaTime;
 
 				if (dy > moveSpeed)
-				{
 					dy = moveSpeed;
-				}
 			}
 		}
 

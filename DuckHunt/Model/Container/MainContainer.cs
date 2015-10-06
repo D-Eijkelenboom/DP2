@@ -26,7 +26,6 @@ namespace DuckHunt.Model.Container
 						break;
 				}
 			}
-
 		}
 
 		public void addEntity(Entity.Entity e)
@@ -42,9 +41,7 @@ namespace DuckHunt.Model.Container
 			foreach (Behaviour b in e.BehaviourList)
 			{
 				if (this[b].Contains(e))
-				{
 					this[b].Remove(e);
-				}
 			}
 		}
 
@@ -55,6 +52,5 @@ namespace DuckHunt.Model.Container
 				ec.update(dt);
 			}
 		}
-
 	}
 }

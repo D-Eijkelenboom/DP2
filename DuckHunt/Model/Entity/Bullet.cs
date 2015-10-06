@@ -3,7 +3,6 @@ namespace DuckHunt.Model.Entity
 {
 	public class Bullet : Entity
 	{
-
 		public Bullet(double x, double y)
 			: base(x, y)
 		{

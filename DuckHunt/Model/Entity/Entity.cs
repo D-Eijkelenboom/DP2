@@ -38,7 +38,6 @@ namespace DuckHunt.Model.Entity
 		protected int screen_width = 500;
 		protected int screen_height = 300;
 
-
 		public Boolean IsMovable { get; set; }
 		public Boolean IsVisible { get; set; }
 		public Boolean IsShootable { get; set; }
@@ -64,37 +63,19 @@ namespace DuckHunt.Model.Entity
 
 		public int Height
 		{
-			get
-			{
-				return height;
-			}
-			set
-			{
-				height = value;
-			}
+			get { return height; }
+			set { height = value; }
 		}
 
 		public double X
 		{
-			get
-			{
-				return this.x;
-			}
-			set
-			{
-				this.x = value;
-			}
+			get { return this.x; }
+			set { this.x = value; }
 		}
 		public double Y
 		{
-			get
-			{
-				return this.y;
-			}
-			set
-			{
-				this.y = value;
-			}
+			get { return this.y; }
+			set { this.y = value; }
 		}
 
 		public Entity(double x, double y)
@@ -143,21 +124,15 @@ namespace DuckHunt.Model.Entity
 		public void slowDown()
 		{
 			if (this.slowDownActive == false && this.speedUpActive == false)
-			{
 				this.slowDownActive = true;
-			}
 		}
 
 		protected void activateSlowDown()
 		{
 			if (moveSpeed > stdMoveSpeed / 8)
-			{
 				moveSpeed -= stdMoveSpeed / 50;
-			}
 			else
-			{
 				freezeAcceleration();
-			}
 		}
 
 		protected void freezeAcceleration()

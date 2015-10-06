@@ -91,9 +91,7 @@ namespace DuckHunt.View
 				Canvas.SetTop(entityIcon, e.Y);
 				Canvas.SetZIndex(entityIcon, -1);
 				this.Children.Add(entityIcon);
-
 			}
 		}
-
 	}
 }

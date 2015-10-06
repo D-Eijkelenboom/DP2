@@ -27,7 +27,6 @@ namespace DuckHunt.Main
 		{
 			stopWatch = new Stopwatch();
 
-
 			double TARGET_FPS = 60;
 			double OPTIMAL_TIME = 1000 / TARGET_FPS;
 
@@ -63,9 +62,7 @@ namespace DuckHunt.Main
 
 
 				if (lastLoopTime - timeAfterLoop + OPTIMAL_TIME > 0)
-				{
 					Thread.Sleep(TimeSpan.FromMilliseconds(lastLoopTime - timeAfterLoop + OPTIMAL_TIME));
-				}
 			}
 		}
 	}

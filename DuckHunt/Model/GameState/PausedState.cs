@@ -46,10 +46,10 @@ namespace DuckHunt.Model.GameState
 				while (this.ActionContainer.Count > 0)
 				{
 					this.ActionContainer.TryDequeue(out action);
+					
 					if (action == null)
-					{
 						continue;
-					}
+					
 					action.execute();
 				}
 			}

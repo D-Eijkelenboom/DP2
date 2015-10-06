@@ -72,13 +72,11 @@ namespace DuckHunt.Model.Entity
 				this.deltaTime = dt;
 				getNextPosition();
 				if (slowDownActive)
-				{
 					activateSlowDown();
-				}
+
 				if (speedUpActive)
-				{
 					activateSpeedUp();
-				}
+
 				moveRandomlyDynamic();
 			}
 		}
@@ -91,18 +89,14 @@ namespace DuckHunt.Model.Entity
 				dx -= moveSpeed * deltaTime;
 
 				if (dx < -moveSpeed)
-				{
 					dx = -moveSpeed;
-				}
 			}
 			else if (movingRight)
 			{
 				dx += moveSpeed * deltaTime;
 
 				if (dx > moveSpeed)
-				{
 					dx = moveSpeed;
-				}
 			}
 		}
 
