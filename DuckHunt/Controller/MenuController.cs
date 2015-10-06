@@ -1,10 +1,5 @@
 ﻿using DuckHunt.Model.GameState;
 using DuckHunt.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace DuckHunt.Controller

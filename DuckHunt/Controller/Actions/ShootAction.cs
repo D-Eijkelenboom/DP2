@@ -1,11 +1,6 @@
 ﻿using DuckHunt.Model.Entity;
 using DuckHunt.Model.Entity.Interface;
 using DuckHunt.Model.GameState;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DuckHunt.Controller.Actions
 {
