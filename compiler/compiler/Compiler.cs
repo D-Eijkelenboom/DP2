@@ -10,13 +10,17 @@ namespace compiler
 {
     class Compiler
     {
-        public Compiler()
+        private LinkedList<Node> list;
+
+        public Compiler(List<Token> tokens)
         {
-            
+            list = new LinkedList<Node>();  
         }
 
-        public void compile()
+        public void compile(List<Token> tokens)
         {
+            list.AddFirst(new DoNothingNode());
+            list.AddLast(new DoNothingNode(null));
         }
 
         public Token getLastToken()

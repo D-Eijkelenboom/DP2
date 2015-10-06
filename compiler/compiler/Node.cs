@@ -9,11 +9,6 @@ namespace compiler
 {
     class Node
     {
-        public Node()
-        {
-            Next = null;
-        }
-
         public Node(Node next)
         {
             Next = next;

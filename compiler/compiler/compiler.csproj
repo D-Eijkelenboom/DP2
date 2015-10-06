@@ -42,18 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractFunctionCallNode.cs" />
-    <Compile Include="CompileDoWhile.cs" />
-    <Compile Include="CompileFunction.cs" />
-    <Compile Include="CompileIf.cs" />
-    <Compile Include="CompileIfElse.cs" />
-    <Compile Include="CompileIfGeneral.cs" />
-    <Compile Include="CompileMinus.cs" />
-    <Compile Include="CompileOperator.cs" />
-    <Compile Include="CompilePlus.cs" />
-    <Compile Include="CompileProduct.cs" />
+    <Compile Include="compileBlocks\CompileDoWhile.cs" />
+    <Compile Include="compileBlocks\CompileFunction.cs" />
+    <Compile Include="compileBlocks\CompileIf.cs" />
+    <Compile Include="compileBlocks\CompileIfElse.cs" />
+    <Compile Include="compileBlocks\CompileIfGeneral.cs" />
+    <Compile Include="compileBlocks\CompileMinus.cs" />
+    <Compile Include="compileBlocks\CompileOperator.cs" />
+    <Compile Include="compileBlocks\CompilePlus.cs" />
+    <Compile Include="compileBlocks\CompileProduct.cs" />
     <Compile Include="Compiler.cs" />
-    <Compile Include="CompileValue.cs" />
-    <Compile Include="CompileWhile.cs" />
+    <Compile Include="compileBlocks\CompileValue.cs" />
+    <Compile Include="compileBlocks\CompileWhile.cs" />
     <Compile Include="ConditionalJump.cs" />
     <Compile Include="DirectFunctionCallNode.cs" />
     <Compile Include="DoNothingNode.cs" />

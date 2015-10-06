@@ -186,17 +186,9 @@ namespace compiler
             return cleanedList.ToArray();
         }
 
-        //public void t()
-        //{
-        //    var token = TokenType.ELIPSISOPEN;
-        //    if (OpenTokens.Contains(token))
-        //    {
-        //        needsClosure.Push(token);
-        //    }
-        //    else if (CloseTokens.Contains(token))
-        //    {
-        //        // Past deze bij degene die bovenop ligt
-        //    }
-        //}
+        public List<Token> getTokens()
+        {
+            return tokens;
+        }
     }
 }

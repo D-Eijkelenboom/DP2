@@ -8,6 +8,12 @@ namespace compiler
 {
     class DoNothingNode : Node
     {
+        public DoNothingNode(Node next)
+            : base(next)
+        { 
+        
+        }
+
         public override Node Execute()
         {
             Next.Execute();

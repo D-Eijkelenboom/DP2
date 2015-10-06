@@ -14,6 +14,7 @@ namespace compiler
         {
             string[] lines = File.ReadAllLines(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "//snippets//example.txt");
             Tokenizer tokenizer = new Tokenizer(lines);
+            Compiler compiler = new Compiler(tokenizer.getTokens());
         }
     }
 }
