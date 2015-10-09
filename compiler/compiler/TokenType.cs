@@ -19,6 +19,7 @@ namespace compiler
         ELIPSISCLOSE,
         SEMICOLON,
         EQUALS,
+        COMPARE,
         LESSEREQUALS,
         GREATEREQUALS,
         NOTEQUALS,

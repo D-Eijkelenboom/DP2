@@ -11,7 +11,7 @@ namespace Compiler
     {
         public Token() { }
 
-        public Token(int linenr, int posnr, TokenType token, object value, int level, int partner)
+        public Token(int linenr, int posnr, TokenType token, string value, int level, Token partner)
         {
             LineNr = linenr;
             PositionNr = posnr;
@@ -27,10 +27,10 @@ namespace Compiler
 
         public TokenType Type { get; set; }
 
-        public object Value { get; set; }
+        public string Value { get; set; }
 
         public int Level { get; set; }
 
-        public int Partner { get; set; }
+        public Token Partner { get; set; }
     }
 }

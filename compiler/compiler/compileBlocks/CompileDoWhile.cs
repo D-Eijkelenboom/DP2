@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace compiler
 {
-    class CompileDoWhile : Compiler
+    class CompileDoWhile
     {
     }
 }

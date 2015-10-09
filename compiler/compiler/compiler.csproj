@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractFunctionCallNode.cs" />
+    <Compile Include="nodes\AbstractFunctionCallNode.cs" />
     <Compile Include="compileBlocks\CompileDoWhile.cs" />
     <Compile Include="compileBlocks\CompileFunction.cs" />
     <Compile Include="compileBlocks\CompileIf.cs" />
@@ -54,15 +54,15 @@
     <Compile Include="Compiler.cs" />
     <Compile Include="compileBlocks\CompileValue.cs" />
     <Compile Include="compileBlocks\CompileWhile.cs" />
-    <Compile Include="ConditionalJump.cs" />
-    <Compile Include="DirectFunctionCallNode.cs" />
-    <Compile Include="DoNothingNode.cs" />
-    <Compile Include="FunctionCallNode.cs" />
-    <Compile Include="JumpNode.cs" />
-    <Compile Include="Node.cs" />
+    <Compile Include="nodes\ConditionalJump.cs" />
+    <Compile Include="nodes\ConditionNode.cs" />
+    <Compile Include="nodes\DirectFunctionCallNode.cs" />
+    <Compile Include="nodes\DoNothingNode.cs" />
+    <Compile Include="nodes\FunctionCallNode.cs" />
+    <Compile Include="nodes\JumpNode.cs" />
+    <Compile Include="nodes\Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Syntax.cs" />
     <Compile Include="Token.cs" />
     <Compile Include="Tokenizer.cs" />
     <Compile Include="TokenType.cs" />

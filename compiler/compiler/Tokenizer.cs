@@ -55,13 +55,13 @@ namespace compiler
                     switch (words[i])
                     { 
                         case "for":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.FOR, "for", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.FOR, "for", level, null));
                             break;
                         case "while":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.WHILE, "while", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.WHILE, "while", level, null));
                             break;
                         case "if":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.IF, "if", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.IF, "if", level, null));
                             needsClosure.Push(tokens.LastOrDefault());
                             break;
                         case "elseif":
@@ -71,7 +71,7 @@ namespace compiler
                             }
                             else
                             {
-                                tokens.Add(new Token(lineNr, posNr, TokenType.ELSEIF, "elseif", level, -1));
+                                tokens.Add(new Token(lineNr, posNr, TokenType.ELSEIF, "elseif", level, null));
                                 needsClosure.Pop();
                             }
                             break;
@@ -83,14 +83,14 @@ namespace compiler
                             else
                             {
                                 needsClosure.Pop();
-                                tokens.Add(new Token(lineNr, posNr, TokenType.ELSE, "else", level, -1));
+                                tokens.Add(new Token(lineNr, posNr, TokenType.ELSE, "else", level, null));
                             }                            
                             break;
                         case "{":
                             level++;
-                            Token token = new Token(lineNr, posNr, TokenType.BRACKETOPEN, "{", level, -1); 
+                            Token token = new Token(lineNr, posNr, TokenType.BRACKETOPEN, "{", level, null); 
                             needsClosure.Push(token);
-                            tokens.Add(token);
+                            tokens.Add(token); 
                             break;
                         case "}":
                             if (needsClosure.Peek().Type != TokenType.BRACKETOPEN && needsClosure.Peek().Type != TokenType.IF)
@@ -106,16 +106,16 @@ namespace compiler
                                     {
                                         level--;
                                         needsClosure.Pop();
-                                        tokens.Add(new Token(lineNr, posNr, TokenType.BRACKETCLOSE, "}", level, -1));
+                                        tokens.Add(new Token(lineNr, posNr, TokenType.BRACKETCLOSE, "}", level, null));
                                     }
                                 }
                                 level--;
                                 needsClosure.Pop();
-                                tokens.Add(new Token(lineNr, posNr, TokenType.BRACKETCLOSE, "}", level, -1));
+                                tokens.Add(new Token(lineNr, posNr, TokenType.BRACKETCLOSE, "}", level, null));
                             }
                             break;
                         case "(":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.ELIPSISOPEN, "(", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.ELIPSISOPEN, "(", level, null));
                             needsClosure.Push(tokens.LastOrDefault());
                             
                             break;
@@ -127,45 +127,48 @@ namespace compiler
                             else
                             {
                                 needsClosure.Pop();
-                                tokens.Add(new Token(lineNr, posNr, TokenType.ELIPSISCLOSE, ")", level, -1));
+                                tokens.Add(new Token(lineNr, posNr, TokenType.ELIPSISCLOSE, ")", level, null));
                             }
                             break;
                         case ";":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.SEMICOLON, ";", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.SEMICOLON, ";", level, null));
                             break;
                         case "=":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.EQUALS, "=", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.EQUALS, "=", level, null));
+                            break;
+                        case "==":
+                            tokens.Add(new Token(lineNr, posNr, TokenType.COMPARE, "=", level, null));
                             break;
                         case "<=":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.LESSEREQUALS, "<=", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.LESSEREQUALS, "<=", level, null));
                             break;
                         case ">=":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.GREATEREQUALS, ">=", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.GREATEREQUALS, ">=", level, null));
                             break;
                         case "!=":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.NOTEQUALS, "!=", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.NOTEQUALS, "!=", level, null));
                             break;
                         case "+":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.PLUS, "+", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.PLUS, "+", level, null));
                             break;
                         case "-":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.MINUS, "-", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.MINUS, "-", level, null));
                             break;
                         case "*":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.MULTIPLY, "*", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.MULTIPLY, "*", level, null));
                             break;
                         case "/":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.DIVIDE, "/", level, -1));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.DIVIDE, "/", level, null));
                             break;
                         default:
                             int value;
                             if (int.TryParse(words[i], out value))
-                            {                                
-                                tokens.Add(new Token(lineNr, posNr, TokenType.NUMBER, value, level, -1));
+                            {
+                                tokens.Add(new Token(lineNr, posNr, TokenType.NUMBER, value.ToString(), level, null));
                             }
                             else 
                             {
-                                tokens.Add(new Token(lineNr, posNr, TokenType.IDENTIFIER, value, level, -1));
+                                tokens.Add(new Token(lineNr, posNr, TokenType.IDENTIFIER, value.ToString(), level, null));
                             }
                             break;
                     }
