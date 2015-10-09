@@ -11,11 +11,9 @@ namespace compiler
 {
     class Compiler
     {
-        private LinkedList<Node> list;
-
-        public Compiler(List<Token> tokens)
+        public Compiler()
         {
-            list = new LinkedList<Node>();  
+            Nodes = new LinkedList<Node>();
         }
 
         public void compile(List<Token> tokens)
@@ -45,7 +43,7 @@ namespace compiler
         public void createFunctionNode(List<Token> part)
         {
             part.RemoveAt(part.Count - 1);
-            nodes.AddLast(new DirectFunctionCallNode(part));
+            Nodes.AddLast(new DirectFunctionCallNode(part));
         }
         public List<Token> createCondition(List<Token> part)
         {
@@ -73,29 +71,29 @@ namespace compiler
         public void createWhile(List<Token> part)
         {
             DoNothingNode nothingStart = new DoNothingNode();
-            nodes.AddLast(nothingStart);
-            LinkedListNode<Node> nothingStartNode = nodes.Last;
+            Nodes.AddLast(nothingStart);
+            LinkedListNode<Node> nothingStartNode = Nodes.Last;
 
             ConditionNode condition = new ConditionNode(createCondition(part));
-            nodes.AddLast(condition);
+            Nodes.AddLast(condition);
 
             ConditionalJump condJump = new ConditionalJump();
-            nodes.AddLast(condJump);
+            Nodes.AddLast(condJump);
 
             DoNothingNode nothingTrue = new DoNothingNode();
-            nodes.AddLast(nothingTrue);
-            condJump.OnTrue = nodes.Last;
+            Nodes.AddLast(nothingTrue);
+            condJump.OnTrue = Nodes.Last;
 
             List<List<Token>> body = processBody(part);
             foreach (List<Token> bodyPart in body)
             {
                 compilePart(bodyPart);
             }
-            nodes.AddLast(new JumpNode(nothingStartNode));
+            Nodes.AddLast(new JumpNode(nothingStartNode));
 
             DoNothingNode nothingFalse = new DoNothingNode();
-            nodes.AddLast(nothingFalse);
-            condJump.OnFalse = nodes.Last;
+            Nodes.AddLast(nothingFalse);
+            condJump.OnFalse = Nodes.Last;
 
         }
 
@@ -142,6 +140,6 @@ namespace compiler
             return parts;
         }
 
-        public LinkedList<Node> nodes { get; set; }
+        public LinkedList<Node> Nodes { get; set; }
     }
 }

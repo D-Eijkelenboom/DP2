@@ -161,14 +161,15 @@ namespace compiler
                             tokens.Add(new Token(lineNr, posNr, TokenType.DIVIDE, "/", level, null));
                             break;
                         default:
+                            string temp = Regex.Replace(words[i], @";", "");
                             int value;
-                            if (int.TryParse(words[i], out value))
+                            if (int.TryParse(temp, out value))
                             {
                                 tokens.Add(new Token(lineNr, posNr, TokenType.NUMBER, value.ToString(), level, null));
                             }
                             else 
                             {
-                                tokens.Add(new Token(lineNr, posNr, TokenType.IDENTIFIER, value.ToString(), level, null));
+                                tokens.Add(new Token(lineNr, posNr, TokenType.IDENTIFIER, temp, level, null));
                             }
                             break;
                     }
