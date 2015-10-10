@@ -34,6 +34,7 @@ namespace compiler
                     createFunctionNode(part);
                     break;
                 case TokenType.WHILE:
+					createWhile(part);
                     break;
                 case TokenType.IF:
                     break;
@@ -45,6 +46,7 @@ namespace compiler
             part.RemoveAt(part.Count - 1);
             Nodes.AddLast(new DirectFunctionCallNode(part));
         }
+
         public List<Token> createCondition(List<Token> part)
         {
             List<Token> returnValue = new List<Token>();
@@ -65,6 +67,9 @@ namespace compiler
                     returnValue.Add(t);
                 }
             }
+
+			int x = 3;
+			x += 1;
             return returnValue;
         }
 

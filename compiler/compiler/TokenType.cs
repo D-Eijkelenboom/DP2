@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace compiler
 {
-    enum TokenType
+    public enum TokenType
     {
         WHILE,
         FOR,

@@ -48,6 +48,11 @@ namespace compiler
             foreach(string line in lines)
             {
                 lineNr++;
+
+				// rscape new line
+				if (line == "")
+					continue;
+
                 string[] words = line.Split(' ');
 
                 for (int i = 0; i < words.Length; i++)

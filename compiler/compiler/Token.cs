@@ -9,7 +9,7 @@ namespace Compiler
 {
     class Token
     {
-        public Token() { }
+        //public Token() { }
 
         public Token(int linenr, int posnr, TokenType token, string value, int level, Token partner)
         {

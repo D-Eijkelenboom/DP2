@@ -9,3 +9,9 @@ C:\School\SWA\DP2\DP2\compiler\compiler\obj\Debug\compiler.pdb
 C:\School\SWA\DP2\DP2\compiler\compiler\obj\Debug\compiler.csprojResolveAssemblyReference.cache
 C:\School\SWA\DP2\DP2\compiler\compiler\bin\Debug\compiler.exe
 C:\School\SWA\DP2\DP2\compiler\compiler\bin\Debug\compiler.pdb
+D:\Users\Roel\Documents\Zooi\DP2\compiler\compiler\bin\Debug\compiler.exe.config
+D:\Users\Roel\Documents\Zooi\DP2\compiler\compiler\obj\Debug\compiler.exe
+D:\Users\Roel\Documents\Zooi\DP2\compiler\compiler\obj\Debug\compiler.pdb
+D:\Users\Roel\Documents\Zooi\DP2\compiler\compiler\bin\Debug\compiler.exe
+D:\Users\Roel\Documents\Zooi\DP2\compiler\compiler\bin\Debug\compiler.pdb
+D:\Users\Roel\Documents\Zooi\DP2\compiler\compiler\obj\Debug\compiler.csprojResolveAssemblyReference.cache
