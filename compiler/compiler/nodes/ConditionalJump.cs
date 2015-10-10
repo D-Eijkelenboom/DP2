@@ -13,9 +13,8 @@ namespace compiler
         private bool conditionResult;
 
         public ConditionalJump()
-        { 
-        
-        }
+        { }
+
         public LinkedListNode<Node> OnTrue { get; set; }
 
         public LinkedListNode<Node> OnFalse { get; set; }

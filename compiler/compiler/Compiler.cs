@@ -37,6 +37,7 @@ namespace compiler
 					createWhile(part);
                     break;
                 case TokenType.IF:
+					createIf(part);
                     break;
             }
         }
@@ -68,8 +69,6 @@ namespace compiler
                 }
             }
 
-			int x = 3;
-			x += 1;
             return returnValue;
         }
 
@@ -99,8 +98,35 @@ namespace compiler
             DoNothingNode nothingFalse = new DoNothingNode();
             Nodes.AddLast(nothingFalse);
             condJump.OnFalse = Nodes.Last;
-
         }
+
+		public void createIf(List<Token> part)
+		{
+			DoNothingNode nothingStart = new DoNothingNode();
+			Nodes.AddLast(nothingStart);
+			LinkedListNode<Node> nothingStartNode = Nodes.Last;
+
+			ConditionNode condition = new ConditionNode(createCondition(part));
+			Nodes.AddLast(condition);
+
+			ConditionalJump condJump = new ConditionalJump();
+			Nodes.AddLast(condJump);
+
+			DoNothingNode nothingTrue = new DoNothingNode();
+			Nodes.AddLast(nothingTrue);
+			condJump.OnTrue = Nodes.Last;
+
+			List<List<Token>> body = processBody(part);
+			foreach (List<Token> bodyPart in body)
+			{
+				compilePart(bodyPart);
+			}
+			Nodes.AddLast(new JumpNode(nothingStartNode));
+
+			DoNothingNode nothingFalse = new DoNothingNode();
+			Nodes.AddLast(nothingFalse);
+			condJump.OnFalse = Nodes.Last;
+		}
 
         public List<List<Token>> processBody(List<Token> part)
         {
