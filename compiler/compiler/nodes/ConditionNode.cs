@@ -10,10 +10,9 @@ namespace compiler.nodes
     class ConditionNode : Node
     {
         public ConditionNode(List<Token> tokens)
-        {
-            this.Tokens = tokens;
-
+        {           
             List<Token> statement = checkCondition(tokens);
+            this.Tokens = statement;
 
             this.LValue = statement[0];
             this.condition = statement[1];

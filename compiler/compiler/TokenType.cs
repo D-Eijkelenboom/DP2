@@ -12,7 +12,6 @@ namespace compiler
         FOR,
         IF,
         ELSE,
-        ELSEIF,
         BRACKETOPEN,
         BRACKETCLOSE,
         ELIPSISOPEN,

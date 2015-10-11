@@ -50,10 +50,6 @@ namespace compiler
                             Nodes.AddLast(new FunctionCallNode(part));
                         }
                     }
-                    else
-                    {
-                        Console.WriteLine("Compile error: \"=\"  not found at lineNR: " + part[1].LineNr + ", linePos: " + part[1].PositionNr);
-                    }
                     break;
                 case TokenType.WHILE:
                     CompileWhile compileWhile = new CompileWhile(this);

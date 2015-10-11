@@ -13,6 +13,7 @@ namespace compiler
     {
         private TokenType[] OpenTokens;
         private TokenType[] CloseTokens;
+        private Stack<Token> ifTokens;
         private Stack<Token> needsClosure;
         private List<Token> tokens;
         private string[] lines;
@@ -33,9 +34,9 @@ namespace compiler
             };
 
             needsClosure = new Stack<Token>();
+            ifTokens = new Stack<Token>();
             tokens = new List<Token>();
 
-            //string[] text = clean(lines);
             tokenize(lines);
         }
         
@@ -47,16 +48,17 @@ namespace compiler
 
             foreach(string line in lines)
             {
+                string cleanLine = Regex.Replace(line, @"\t|\n|\r", "");
                 lineNr++;
 
-				// rscape new line
-				if (line == "")
+				// escape new line
+                if (cleanLine == "")
 					continue;
 
-                string[] words = line.Split(' ');
+                string[] words = cleanLine.Split(' ');
 
                 for (int i = 0; i < words.Length; i++)
-                {                   
+                {
                     switch (words[i])
                     { 
                         case "for":
@@ -67,28 +69,18 @@ namespace compiler
                             break;
                         case "if":
                             tokens.Add(new Token(lineNr, posNr, TokenType.IF, "if", level, null));
-                            needsClosure.Push(tokens.LastOrDefault());
-                            break;
-                        case "elseif":
-                            if (needsClosure.Peek().Type != TokenType.IF)
+                            ifTokens.Push(tokens.LastOrDefault());
+                            break;                        
+                        case "else":
+                            if (ifTokens.Count == 0)
                             {
                                 Console.WriteLine("Error: IF statement not found");
                             }
                             else
                             {
-                                tokens.Add(new Token(lineNr, posNr, TokenType.ELSEIF, "elseif", level, null));
-                                needsClosure.Pop();
-                            }
-                            break;
-                        case "else":
-                            if (needsClosure.Peek().Type != TokenType.IF || needsClosure.Peek().Type != TokenType.ELSEIF)
-                            {
-                                Console.WriteLine("Error: IF / ELSEIF statement not found");
-                            }
-                            else
-                            {
-                                needsClosure.Pop();
-                                tokens.Add(new Token(lineNr, posNr, TokenType.ELSE, "else", level, null));
+                                Token partner = ifTokens.Pop();
+                                tokens.Add(new Token(lineNr, posNr, TokenType.ELSE, "else", level, partner));
+                                partner.Partner = tokens.LastOrDefault();
                             }                            
                             break;
                         case "{":
@@ -98,24 +90,17 @@ namespace compiler
                             tokens.Add(token); 
                             break;
                         case "}":
-                            if (needsClosure.Peek().Type != TokenType.BRACKETOPEN && needsClosure.Peek().Type != TokenType.IF)
+                            if (needsClosure.Peek().Type != TokenType.BRACKETOPEN)
                             {
                                 Console.WriteLine("Error: } not found");
                             }
                             else
                             {
-                                if (needsClosure.Peek().Type == TokenType.IF)
-                                {
-                                    needsClosure.Pop();
-                                    if (needsClosure.Peek().Type == TokenType.BRACKETOPEN)
-                                    {
-                                        needsClosure.Pop();
-                                        tokens.Add(new Token(lineNr, posNr, TokenType.BRACKETCLOSE, "}", level, null));
-                                    }
-                                }
                                 level--;
-                                needsClosure.Pop();
-                                tokens.Add(new Token(lineNr, posNr, TokenType.BRACKETCLOSE, "}", level, null));
+                                Token partner = needsClosure.Pop();
+                                tokens.Add(new Token(lineNr, posNr, TokenType.BRACKETCLOSE, "}", level, partner));
+                                partner.Partner = tokens.LastOrDefault();
+
                             }
                             break;
                         case "(":
@@ -130,8 +115,9 @@ namespace compiler
                             }
                             else
                             {
-                                needsClosure.Pop();
-                                tokens.Add(new Token(lineNr, posNr, TokenType.ELIPSISCLOSE, ")", level, null));
+                                Token partner = needsClosure.Pop();
+                                tokens.Add(new Token(lineNr, posNr, TokenType.ELIPSISCLOSE, ")", level, partner));
+                                partner.Partner = tokens.LastOrDefault();
                             }
                             break;
                         case ";":
@@ -180,18 +166,12 @@ namespace compiler
                     posNr = posNr + words[i].Length + 1;
                 }                                
             }
-            return tokens;
-        }
-
-        private string[] clean(string[] lines)
-        {
-            List<string> cleanedList = new List<string>();
-            foreach (string line in lines)
+            if(needsClosure.Count != 0)
             {
-                string cleanedString = Regex.Replace(line, @"^\s*$\n", string.Empty, RegexOptions.Multiline).TrimEnd();
-                cleanedList.Add(cleanedString);
+                Console.WriteLine("Compile error: \"} or ) \" missing!");
             }
-            return cleanedList.ToArray();
+
+            return tokens;
         }
 
         public List<Token> getTokens()
