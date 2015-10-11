@@ -9,7 +9,11 @@ namespace DuckHunt.View
 {
 	public class GameCanvas : Canvas
 	{
-		private Label statusLabel;
+		private Label lblBulletCount;
+		private Label lblShotsFired;
+		private Label lblTime;
+		private Label lblFps;
+		private Label lblStatus;
 
 		private BitmapImage chickenImage = new BitmapImage(new Uri("..\\Images\\chicken.png", UriKind.RelativeOrAbsolute));
 		private BitmapImage bulletImage = new BitmapImage(new Uri("..\\Images\\gunshot-clipart-bullet-hole-hi.png", UriKind.RelativeOrAbsolute));
@@ -48,23 +52,126 @@ namespace DuckHunt.View
 		{
 			this.Dispatcher.Invoke(new Action(() =>
 			{
-				if (statusLabel == null)
+				if (lblStatus == null)
+					lblStatus = new Label();
+
+				lblStatus.Name = "lblStatus";
+				lblStatus.Content = message;
+				lblStatus.Width = this.MaxWidth;
+				lblStatus.FontSize = 18;
+				lblStatus.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
+				lblStatus.Height = 108;
+				Canvas.SetTop(lblStatus, Math.Round(this.MaxHeight / 2) - lblStatus.Height);
+				Canvas.SetZIndex(lblStatus, 150);
+				if (!this.Children.Contains(lblStatus))
 				{
-					statusLabel = new Label();
-				}
-				statusLabel.Name = "statusLabel";
-				statusLabel.Content = message;
-				statusLabel.Width = this.MaxWidth;
-				statusLabel.FontSize = 18;
-				statusLabel.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
-				statusLabel.Height = 36;
-				Canvas.SetTop(statusLabel, Math.Round(this.MaxHeight / 2) - statusLabel.Height);
-				Canvas.SetZIndex(statusLabel, 150);
-				if (!this.Children.Contains(statusLabel))
-				{
-					this.Children.Add(statusLabel);
+					this.Children.Add(lblStatus);
 				}
 			}));
+		}
+
+		public void drawUiLabels(int bullets = 0, int score = 0, long gameTime = 0, double FPS = 0)
+		{
+			this.Dispatcher.Invoke(new Action(() =>
+			{
+				if (lblBulletCount == null)
+					lblBulletCount = new Label();
+
+				lblBulletCount.Name = "lblBulletCount";
+				//lblBulletCount.Content = "Bullets: " + game.StatusTracker.Bullets;
+				lblBulletCount.Content = "Bullets: " + bullets;
+				lblBulletCount.Width = 114;
+				Canvas.SetZIndex(lblBulletCount, 100);
+				Canvas.SetTop(lblBulletCount, 248);
+				if (!this.Children.Contains(lblBulletCount))
+					this.Children.Add(lblBulletCount);
+
+				if (lblShotsFired == null)
+					lblShotsFired = new Label();
+
+				lblShotsFired.Name = "lblShotsFired";
+				//lblHitCount.Content = "Hits: " + game.StatusTracker.Score;
+				lblShotsFired.Content = "Shots: " + score;
+				Canvas.SetZIndex(lblShotsFired, 100);
+				Canvas.SetTop(lblShotsFired, 274);
+				lblShotsFired.Width = 114;
+				if (!this.Children.Contains(lblShotsFired))
+					this.Children.Add(lblShotsFired);
+				
+
+				if (lblTime == null)
+					lblTime = new Label();
+
+				lblTime.Name = "lblTime";
+				//lblTime.Content = "Time: " + game.StatusTracker.GameTime;
+				lblTime.Content = "Time: " + gameTime;
+				Canvas.SetZIndex(lblTime, 100);
+				Canvas.SetTop(lblTime, -1);
+				if (!this.Children.Contains(lblTime))
+					this.Children.Add(lblTime);
+				
+
+				if (lblFps == null)
+					lblFps = new Label();
+
+				lblFps.Name = "lblFps";
+				//this.lblFps.Content = "FPS: " + game.StatusTracker.RealTimeFps;
+				this.lblFps.Content = "FPS: " + FPS;
+				Canvas.SetLeft(lblFps, 421);
+				Canvas.SetZIndex(lblFps, 100);
+				Canvas.SetTop(lblFps, -1);
+				if (!this.Children.Contains(lblFps))
+					this.Children.Add(lblFps);
+			}));
+		}
+		public void createUiLabels(int bullets = 0, int hits = 0, long gameTime = 0, int FPS = 0)
+		{
+			if (lblBulletCount == null)
+				lblBulletCount = new Label();
+
+			lblBulletCount.Name = "lblBulletCount";
+			//lblBulletCount.Content = "Bullets: " + game.StatusTracker.Bullets;
+			lblBulletCount.Content = "Bullets: " + bullets;
+			lblBulletCount.Width = 114;
+			Canvas.SetZIndex(lblBulletCount, 100);
+			Canvas.SetTop(lblBulletCount, 248);
+			if (!this.Children.Contains(lblBulletCount))
+				this.Children.Add(lblBulletCount);
+
+			if (lblShotsFired == null)
+				lblShotsFired = new Label();
+
+			lblShotsFired.Name = "lblHitCount";
+			//lblHitCount.Content = "Hits: " + game.StatusTracker.Score;
+			lblShotsFired.Content = "Hits: " + hits; 
+			Canvas.SetZIndex(lblShotsFired, 100);
+			Canvas.SetTop(lblShotsFired, 274);
+			lblShotsFired.Width = 114;
+			if (!this.Children.Contains(lblShotsFired))
+				this.Children.Add(lblShotsFired);
+
+			if (lblTime == null)
+				lblTime = new Label();
+
+			lblTime.Name = "lblTime";
+			//lblTime.Content = "Time: " + game.StatusTracker.GameTime;
+			lblTime.Content = "Time: " + gameTime;
+			Canvas.SetZIndex(lblTime, 100);
+			Canvas.SetTop(lblTime, -1);
+			if (!this.Children.Contains(lblTime))
+				this.Children.Add(lblTime);
+
+			if (lblFps == null)
+				lblFps = new Label();
+
+			lblFps.Name = "lblFps";
+			//this.lblFps.Content = "FPS: " + game.StatusTracker.RealTimeFps;
+			this.lblFps.Content = "FPS: " + FPS;
+			Canvas.SetLeft(lblFps, 421);
+			Canvas.SetZIndex(lblFps, 100);
+			Canvas.SetTop(lblFps, -1);
+			if (!this.Children.Contains(lblFps))
+				this.Children.Add(lblFps);
 		}
 
 		public void drawEntities(EntityContainer ec)

@@ -3,6 +3,8 @@ namespace DuckHunt.Model.GameState
 {
 	public enum GameStateType
 	{
+		[GameStateInfoAttribute(typeof(MenuState))]
+		menuState,
 		[GameStateInfoAttribute(typeof(Level1State))]
 		level1,
 		[GameStateInfoAttribute(typeof(Level2State))]
@@ -10,6 +12,8 @@ namespace DuckHunt.Model.GameState
 		[GameStateInfoAttribute(typeof(FinishedState))]
 		finished,
 		[GameStateInfoAttribute(typeof(PausedState))]
-		pause
+		pause,
+		[GameStateInfoAttribute(typeof(GameOverState))]
+		gameOver
 	}
 }

@@ -12,6 +12,13 @@ namespace DuckHunt.Model.GameState
 
 		public Stack<GameState> GameStates { get; set; }
 
+		private StatusTracker stats;
+		public StatusTracker Stats
+		{
+			get { return stats; }
+			set { stats = value; }
+		}
+
 		public GameStateManager(Game game)
 		{
 			this.Game = game;
@@ -23,9 +30,10 @@ namespace DuckHunt.Model.GameState
 			this.GameWindow.Show();
 
 			//Model
-			GameStates = new Stack<GameState>();
-			this.changeGameState(GameStateFactory.createGameState(GameStateType.level1));
+			stats = new StatusTracker();
 
+			GameStates = new Stack<GameState>();
+			this.changeGameState(GameStateFactory.createGameState(GameStateType.menuState));
 		}
 
 		public void changeGameState(GameState gameState)
@@ -82,6 +90,5 @@ namespace DuckHunt.Model.GameState
 		{
 			this.Game.Running = false;
 		}
-
 	}
 }

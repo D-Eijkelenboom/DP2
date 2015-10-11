@@ -1,10 +1,9 @@
 ﻿using DuckHunt.Controller;
 using DuckHunt.Controller.Actions;
 using DuckHunt.Model.Container;
-
 namespace DuckHunt.Model.GameState
 {
-	public class FinishedState : GameState
+	public class GameOverState : GameState
 	{
 		public GameStateManager GSM { get; set; }
 		public MainContainer MainContainer { get; set; }
@@ -54,7 +53,7 @@ namespace DuckHunt.Model.GameState
 
 		public void draw()
 		{
-			string msg = "You Won! Press P to start over!\n";
+			string msg = "Gameover! No more bullets, press P to try again!\n";
 			//msg += "Shots fired: " + GSM.Stats.Shots + "\n";
 			//msg += "PlayTime: " + GSM.Stats.playTime;
 			this.GSM.GameCanvas.drawStatusLabel(msg);

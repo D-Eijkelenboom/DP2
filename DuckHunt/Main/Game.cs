@@ -48,8 +48,12 @@ namespace DuckHunt.Main
 				lastFpsTime += updateLength;
 				fps++;
 
+				// update total gameTime
+				gsm.Stats.increaseTime(updateLength);
+
 				if (lastFpsTime >= 1000)
 				{
+					gsm.Stats.FPS = fps;
 					lastFpsTime = 0;
 					fps = 0;
 				}

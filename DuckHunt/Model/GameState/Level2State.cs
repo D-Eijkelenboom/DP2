@@ -14,6 +14,8 @@ namespace DuckHunt.Model.GameState
 		public MainContainer MainContainer { get; set; }
 		public ActionContainer ActionContainer { get; set; }
 
+		int lvlBullets;
+
 		public static Level2State Instance()
 		{
 			if (instance == null)
@@ -24,8 +26,10 @@ namespace DuckHunt.Model.GameState
 
 		public void init(GameStateManager gsm)
 		{
+			lvlBullets = 8;
 			this.GSM = gsm;
-
+			GSM.Stats.Bullets = lvlBullets;
+			
 			this.ActionContainer = new ActionContainer();
 
 			this.MainContainer = new MainContainer();
@@ -55,12 +59,19 @@ namespace DuckHunt.Model.GameState
 						continue;
 
 					action.execute();
+					GSM.Stats.substractBullets();
 				}
 			}
 		}
 
 		public void update(double dt)
 		{
+			if (this.GSM.Stats.Bullets < 1)
+			{
+				this.GSM.changeGameState(GameStateFactory.createGameState(GameStateType.gameOver));
+				return;
+			}
+
 			if (this.MainContainer[Behaviour.Shootable].Count < 1)
 			{
 				this.GSM.changeGameState(GameStateFactory.createGameState(GameStateType.finished));
@@ -72,6 +83,8 @@ namespace DuckHunt.Model.GameState
 		public void draw()
 		{
 			this.GSM.GameCanvas.draw(MainContainer[Behaviour.Visible]);
+			this.GSM.GameCanvas.drawUiLabels(bullets: this.GSM.Stats.Bullets, score: this.GSM.Stats.Shots,
+				gameTime: this.GSM.Stats.GameTime, FPS: this.GSM.Stats.FPS);
 		}
 
 

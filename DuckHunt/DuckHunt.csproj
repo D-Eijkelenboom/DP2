@@ -53,6 +53,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Entity\EntiyStates\EntityAlive.cs" />
+    <Compile Include="Model\Entity\EntiyStates\EntityDead.cs" />
+    <Compile Include="Model\Entity\EntiyStates\EntityState.cs" />
+    <Compile Include="Model\Entity\EntiyStates\EntiyStateType.cs" />
+    <Compile Include="Model\Entity\EntiyStates\EntityStateInfoAttribute.cs" />
+    <Compile Include="Model\GameState\GameOverState.cs" />
+    <Compile Include="Model\GameState\MenuState.cs" />
+    <Compile Include="Model\StatusTracker.cs" />
     <Compile Include="View\GameCanvas.cs" />
     <Compile Include="View\GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>

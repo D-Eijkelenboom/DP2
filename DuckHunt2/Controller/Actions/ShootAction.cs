@@ -19,8 +19,8 @@ namespace DuckHunt2.Controller.Actions
 
 		public override void execute()
 		{
-			game.Player.SoundLocation = "data\\Sounds\\Small_Gun_Shot.wav";
-			game.Player.Play();
+			//game.Player.SoundLocation = "data\\Sounds\\Small_Gun_Shot.wav";
+			//game.Player.Play();
 
 			game.Bullets.Add(EntityFactory.createBullet(X, Y));
 
@@ -28,8 +28,9 @@ namespace DuckHunt2.Controller.Actions
 			{
 				if (e.IsAlive && e.isHit(X, Y))
 				{
-					game.Player.SoundLocation = "data\\Sounds\\Blood_Hit.wav";
-					game.Player.Play();
+					//game.Player.SoundLocation = "data\\Sounds\\Blood_Hit.wav";
+					//game.Player.Play();
+
 					e.IsAlive = false;
 					game.StatusTracker.increaseScore();
 					break;

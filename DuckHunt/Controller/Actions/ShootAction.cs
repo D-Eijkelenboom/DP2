@@ -23,6 +23,7 @@ namespace DuckHunt.Controller.Actions
 				if (e.IsAlive && e.isHit(this.X, this.Y))
 				{
 					this.GameState.MainContainer.removeEntity((Entity)e);
+					
 					break;
 				}
 			}

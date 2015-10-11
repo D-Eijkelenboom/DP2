@@ -4,7 +4,7 @@ using DuckHunt.Model.Container;
 
 namespace DuckHunt.Model.GameState
 {
-	public class FinishedState : GameState
+	public class MenuState : GameState
 	{
 		public GameStateManager GSM { get; set; }
 		public MainContainer MainContainer { get; set; }
@@ -14,9 +14,6 @@ namespace DuckHunt.Model.GameState
 		public void init(GameStateManager gsm)
 		{
 			this.GSM = gsm;
-
-			gsm.Stats.Bullets = 0;
-			//gsm.Stats.playTime = gsm.Stats.GameTime;
 
 			this.ActionContainer = new ActionContainer();
 
@@ -54,10 +51,7 @@ namespace DuckHunt.Model.GameState
 
 		public void draw()
 		{
-			string msg = "You Won! Press P to start over!\n";
-			//msg += "Shots fired: " + GSM.Stats.Shots + "\n";
-			//msg += "PlayTime: " + GSM.Stats.playTime;
-			this.GSM.GameCanvas.drawStatusLabel(msg);
+			this.GSM.GameCanvas.drawStatusLabel("Welcome! Press P to paly!");
 		}
 
 		public void pause()

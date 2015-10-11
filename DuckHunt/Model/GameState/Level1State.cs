@@ -2,6 +2,7 @@
 using DuckHunt.Controller.Actions;
 using DuckHunt.Model.Container;
 using DuckHunt.Model.Entity;
+using System.Collections.Generic;
 
 namespace DuckHunt.Model.GameState
 {
@@ -14,21 +15,24 @@ namespace DuckHunt.Model.GameState
 		public MainContainer MainContainer { get; set; }
 		public ActionContainer ActionContainer { get; set; }
 
-		public Level1State()
-		{ }
+		int lvlBulletes;
+
+		public Level1State() { }
 
 		public static Level1State Instance()
 		{
 			if (instance == null)
-			{
 				instance = new Level1State();
-			}
+
 			return instance;
 		}
 
 		public void init(GameStateManager gsm)
 		{
+			lvlBulletes = 10;
 			this.GSM = gsm;
+
+			this.GSM.Stats.Bullets = lvlBulletes;
 
 			this.ActionContainer = new ActionContainer();
 
@@ -59,12 +63,20 @@ namespace DuckHunt.Model.GameState
 						continue;
 
 					action.execute();
+					GSM.Stats.substractBullets();
+					GSM.Stats.increaseShots();
 				}
 			}
 		}
 
 		public void update(double dt)
 		{
+			if (this.GSM.Stats.Bullets < 1)
+			{
+				this.GSM.changeGameState(GameStateFactory.createGameState(GameStateType.gameOver));
+				return;
+			}
+
 			if (this.MainContainer[Behaviour.Shootable].Count < 1)
 			{
 				this.GSM.changeGameState(GameStateFactory.createGameState(GameStateType.level2));
@@ -76,6 +88,8 @@ namespace DuckHunt.Model.GameState
 		public void draw()
 		{
 			this.GSM.GameCanvas.draw(MainContainer[Behaviour.Visible]);
+			this.GSM.GameCanvas.drawUiLabels(bullets: this.GSM.Stats.Bullets, score: this.GSM.Stats.Shots,
+				gameTime: this.GSM.Stats.GameTime, FPS: this.GSM.Stats.FPS);
 		}
 
 		public void pause()
