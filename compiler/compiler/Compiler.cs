@@ -54,12 +54,15 @@ namespace compiler
                     CompileWhile compileWhile = new CompileWhile(this);
                     compileWhile.compile(part);
                     break;
-                case TokenType.IF:
+                case TokenType.IF:					
                     break;
             }
         }           
         
         public List<List<Token>> createParts(List<Token> tokens)
+        }
+
+        public List<Token> createCondition(List<Token> part)
         {
             List<List<Token>> parts = new List<List<Token>>();
 
@@ -77,7 +80,8 @@ namespace compiler
             return parts;
         }
 
-        public List<List<Token>> compileBody(List<Token> part)
+
+        public List<List<Token>> processBody(List<Token> part)
         {
             List<Token> bodyParts = new List<Token>();
             bool open = false;
