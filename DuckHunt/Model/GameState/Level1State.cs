@@ -63,8 +63,8 @@ namespace DuckHunt.Model.GameState
 						continue;
 
 					action.execute();
-					GSM.Stats.substractBullets();
-					GSM.Stats.increaseShots();
+					//GSM.Stats.substractBullets();
+					//GSM.Stats.increaseShots();
 				}
 			}
 		}

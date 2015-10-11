@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuckHunt.Model.Entity.EntiyStates;
+using System;
 using System.Collections.Generic;
 
 namespace DuckHunt.Model.Entity
@@ -32,6 +33,7 @@ namespace DuckHunt.Model.Entity
 
 		public List<Behaviour> BehaviourList { get; set; }
 
+		protected Stack<EntityState> EntitiyState { get; set; }
 
 		protected double deltaTime;
 
