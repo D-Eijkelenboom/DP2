@@ -37,6 +37,11 @@ namespace compiler
 
                     if (part[1].Type == TokenType.EQUALS)
                     {
+                        if (part[part.Count - 1].Type != TokenType.SEMICOLON)
+                        {
+                            Console.WriteLine("Compile error: \";\" not found at: " + part[part.Count - 1].LineNr + ", linePos: " + part[part.Count - 1].PositionNr);
+                        }
+
                         if (part.Count <= 3)
                         {
                             Console.WriteLine("Compile error: Incorrect assignment at lineNR: " + part[1].LineNr + ", linePos: " + part[1].PositionNr);
