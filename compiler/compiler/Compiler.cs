@@ -14,6 +14,7 @@ namespace compiler
         public Compiler()
         {
             Nodes = new LinkedList<Node>();
+            Nodes.AddLast(new DoNothingNode());
         }
 
         public void compile(List<Token> tokens)
@@ -36,7 +37,11 @@ namespace compiler
 
                     if (part[1].Type == TokenType.EQUALS)
                     {
-                        if (part.Count == 3)
+                        if (part.Count <= 3)
+                        {
+                            Console.WriteLine("Compile error: Incorrect assignment at lineNR: " + part[1].LineNr + ", linePos: " + part[1].PositionNr);
+                        }
+                        else if (part.Count == 4)
                         {
                             Nodes.AddLast(new DirectFunctionCallNode(part));
                         }
@@ -57,12 +62,9 @@ namespace compiler
                 case TokenType.IF:					
                     break;
             }
-        }           
-        
-        public List<List<Token>> createParts(List<Token> tokens)
         }
 
-        public List<Token> createCondition(List<Token> part)
+        public List<List<Token>> createParts(List<Token> tokens)
         {
             List<List<Token>> parts = new List<List<Token>>();
 
@@ -80,8 +82,7 @@ namespace compiler
             return parts;
         }
 
-
-        public List<List<Token>> processBody(List<Token> part)
+        public List<List<Token>> compileBody(List<Token> part)
         {
             List<Token> bodyParts = new List<Token>();
             bool open = false;

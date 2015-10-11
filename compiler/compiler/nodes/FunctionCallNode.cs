@@ -15,7 +15,13 @@ namespace compiler
             Parameters = new List<Token>();
             Identifier = tokens[0];
 
-            for (int i = 2; i < tokens.Count; i++)
+            int max = tokens.Count;
+            if (tokens[tokens.Count - 1].Type == TokenType.SEMICOLON)
+            {
+                max = tokens.Count - 1;
+            }
+
+            for (int i = 2; i < max; i++)
             {
                 this.Parameters.Add(tokens[i]);
             }

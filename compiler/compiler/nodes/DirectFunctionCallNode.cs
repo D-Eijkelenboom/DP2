@@ -11,12 +11,12 @@ namespace compiler
     {
         public DirectFunctionCallNode(List<Token> tokens)
         {
-            Identifier = tokens[0].Value;
-            ReturnValue = tokens[2].Value;
+            Identifier = tokens[0];
+            ReturnValue = tokens[2];
         }
 
-        public string Identifier;
+        public Token Identifier;
 
-        public string ReturnValue { get; set; }
+        public Token ReturnValue { get; set; }
     }
 }

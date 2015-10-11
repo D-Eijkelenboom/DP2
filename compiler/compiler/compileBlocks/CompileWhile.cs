@@ -14,6 +14,7 @@ namespace compiler
 
         public CompileWhile(Compiler compiler)
         {
+            this.compiler = compiler;
         }
 
         public void compile(List<Token> tokens)
