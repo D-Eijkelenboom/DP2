@@ -13,9 +13,11 @@ namespace compiler.nodes
         {
             this.Tokens = tokens;
 
-            this.LValue = Tokens[0];
-            this.condition = Tokens[1];
-            this.RValue = Tokens[2];
+            List<Token> statement = checkCondition(tokens);
+
+            this.LValue = statement[0];
+            this.condition = statement[1];
+            this.RValue = statement[2];
         }
 
         public bool execute()
@@ -33,6 +35,29 @@ namespace compiler.nodes
                 default:
                     throw new ArgumentException("Not supported in our compiler");
             }
+        }
+
+        public List<Token> checkCondition(List<Token> tokens)
+        {
+            List<Token> returnValue = new List<Token>();
+            bool isCondition = false;
+
+            foreach (Token token in tokens)
+            {
+                switch (token.Type)
+                {
+                    case TokenType.ELIPSISOPEN:
+                        isCondition = true;
+                        break;
+                    case TokenType.ELIPSISCLOSE:
+                        return returnValue;
+                }
+                if (isCondition && token.Type != TokenType.ELIPSISOPEN)
+                {
+                    returnValue.Add(token);
+                }
+            }
+            return returnValue;
         }
 
         public Token LValue { get; set; }

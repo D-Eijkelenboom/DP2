@@ -1,4 +1,5 @@
-﻿using Compiler;
+﻿using compiler.nodes;
+using Compiler;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,69 +10,38 @@ namespace compiler
 {
     class CompileWhile
     {
-        private Stack<Token> needsclosure;
-        private TokenType[] OpenTokens;
-        private TokenType[] CloseTokens;
+        private Compiler compiler;
 
-        public CompileWhile()
+        public CompileWhile(Compiler compiler)
         {
-            OpenTokens = new TokenType[]
-            {
-                TokenType.BRACKETOPEN,
-                TokenType.ELIPSISOPEN
-            };
-
-            CloseTokens = new TokenType[]
-            {
-                TokenType.BRACKETOPEN,
-                TokenType.ELIPSISOPEN
-            };
-
-            needsclosure = new Stack<Token>();
         }
 
         public void compile(List<Token> tokens)
-        { 
-            foreach(Token token in tokens)
+        {
+            DoNothingNode nothingStart = new DoNothingNode();
+            compiler.Nodes.AddLast(nothingStart);
+            LinkedListNode<Node> nothingStartNode = compiler.Nodes.Last;
+
+            ConditionNode condition = new ConditionNode(tokens);
+            compiler.Nodes.AddLast(condition);
+
+            ConditionalJump conditionalJump = new ConditionalJump();
+            compiler.Nodes.AddLast(conditionalJump);
+
+            DoNothingNode nothingTrue = new DoNothingNode();
+            compiler.Nodes.AddLast(nothingTrue);
+            conditionalJump.OnTrue = compiler.Nodes.Last;
+
+            List<List<Token>> body = compiler.compileBody(tokens);
+            foreach (List<Token> bodyPart in body)
             {
-                if (OpenTokens.Contains(token.Type))
-                {
-                    needsclosure.Push(token);
-                }
-                if (CloseTokens.Contains(token.Type))
-                {
-                    if(token.Type == TokenType.BRACKETCLOSE)
-                    {
-                        if (needsclosure.Peek().Type == TokenType.BRACKETOPEN)
-                        {
-                            needsclosure.Pop();
-                        }
-                        else
-                        {
-                            Console.WriteLine("Compile error at line: " + token.LineNr + " position: " + token.PositionNr);
-                            Console.WriteLine(" \"{\" not found");
-                        }
-                    }
-                    else if (token.Type == TokenType.ELIPSISCLOSE)
-                    {
-                        if (needsclosure.Peek().Type == TokenType.ELIPSISOPEN)
-                        {
-                            needsclosure.Pop();
-                        }
-                        else
-                        {
-                            Console.WriteLine("Compile error at line: " + token.LineNr + " position: " + token.PositionNr);
-                            Console.WriteLine(" \"(\" not found");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Compile error at line: " + token.LineNr + " position: " + token.PositionNr);
-                    }
-                }
-
-
+                compiler.compilePart(bodyPart);
             }
-        }
+            compiler.Nodes.AddLast(new JumpNode(nothingStartNode));
+
+            DoNothingNode nothingFalse = new DoNothingNode();
+            compiler.Nodes.AddLast(nothingFalse);
+            conditionalJump.OnFalse = compiler.Nodes.Last;
+        }        
     }
 }

@@ -31,73 +31,53 @@ namespace compiler
             switch (part[0].Type)
             { 
                 case TokenType.IDENTIFIER:
-                    createFunctionNode(part);
+                    
+                    Token identifier = part[0];
+
+                    if (part[1].Type == TokenType.EQUALS)
+                    {
+                        if (part.Count == 3)
+                        {
+                            Nodes.AddLast(new DirectFunctionCallNode(part));
+                        }
+                        else
+                        {
+                            Nodes.AddLast(new FunctionCallNode(part));
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Compile error: \"=\"  not found at lineNR: " + part[1].LineNr + ", linePos: " + part[1].PositionNr);
+                    }
                     break;
                 case TokenType.WHILE:
+                    CompileWhile compileWhile = new CompileWhile(this);
+                    compileWhile.compile(part);
                     break;
                 case TokenType.IF:
                     break;
             }
-        }
-
-        public void createFunctionNode(List<Token> part)
+        }           
+        
+        public List<List<Token>> createParts(List<Token> tokens)
         {
-            part.RemoveAt(part.Count - 1);
-            Nodes.AddLast(new DirectFunctionCallNode(part));
-        }
-        public List<Token> createCondition(List<Token> part)
-        {
-            List<Token> returnValue = new List<Token>();
-            bool condition = false;
+            List<List<Token>> parts = new List<List<Token>>();
 
-            foreach (Token t in part)
+            List<Token> part = new List<Token>();
+
+            foreach (Token token in tokens)
             {
-                switch (t.Type)
+                part.Add(token);
+                if (token.Type == TokenType.BRACKETCLOSE || (token.Type == TokenType.SEMICOLON && token.Level == part[0].Level))
                 {
-                    case TokenType.ELIPSISOPEN:
-                        condition = true;
-                        break;
-                    case TokenType.ELIPSISCLOSE:
-                        return returnValue;
-                }
-                if (condition && t.Type != TokenType.ELIPSISOPEN)
-                {
-                    returnValue.Add(t);
+                    parts.Add(part);
+                    part = new List<Token>();
                 }
             }
-            return returnValue;
+            return parts;
         }
 
-        public void createWhile(List<Token> part)
-        {
-            DoNothingNode nothingStart = new DoNothingNode();
-            Nodes.AddLast(nothingStart);
-            LinkedListNode<Node> nothingStartNode = Nodes.Last;
-
-            ConditionNode condition = new ConditionNode(createCondition(part));
-            Nodes.AddLast(condition);
-
-            ConditionalJump condJump = new ConditionalJump();
-            Nodes.AddLast(condJump);
-
-            DoNothingNode nothingTrue = new DoNothingNode();
-            Nodes.AddLast(nothingTrue);
-            condJump.OnTrue = Nodes.Last;
-
-            List<List<Token>> body = processBody(part);
-            foreach (List<Token> bodyPart in body)
-            {
-                compilePart(bodyPart);
-            }
-            Nodes.AddLast(new JumpNode(nothingStartNode));
-
-            DoNothingNode nothingFalse = new DoNothingNode();
-            Nodes.AddLast(nothingFalse);
-            condJump.OnFalse = Nodes.Last;
-
-        }
-
-        public List<List<Token>> processBody(List<Token> part)
+        public List<List<Token>> compileBody(List<Token> part)
         {
             List<Token> bodyParts = new List<Token>();
             bool open = false;
@@ -120,24 +100,6 @@ namespace compiler
             }
 
             return createParts(bodyParts);
-        }
-
-        public List<List<Token>> createParts(List<Token> tokens)
-        {
-            List<List<Token>> parts = new List<List<Token>>();
-
-            List<Token> part = new List<Token>();
-
-            foreach (Token token in tokens)
-            {
-                part.Add(token);
-                if (token.Type == TokenType.BRACKETCLOSE || (token.Type == TokenType.SEMICOLON && token.Level == part[0].Level))
-                {
-                    parts.Add(part);
-                    part = new List<Token>();
-                }
-            }
-            return parts;
         }
 
         public LinkedList<Node> Nodes { get; set; }

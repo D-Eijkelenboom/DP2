@@ -104,7 +104,6 @@ namespace compiler
                                     needsClosure.Pop();
                                     if (needsClosure.Peek().Type == TokenType.BRACKETOPEN)
                                     {
-                                        level--;
                                         needsClosure.Pop();
                                         tokens.Add(new Token(lineNr, posNr, TokenType.BRACKETCLOSE, "}", level, null));
                                     }
