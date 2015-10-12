@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="compileBlocks\CompileElse.cs" />
     <Compile Include="nodes\AbstractFunctionCallNode.cs" />
     <Compile Include="compileBlocks\CompileIf.cs" />
     <Compile Include="Compiler.cs" />

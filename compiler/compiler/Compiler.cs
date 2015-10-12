@@ -60,7 +60,12 @@ namespace compiler
                     CompileWhile compileWhile = new CompileWhile(this);
                     compileWhile.compile(part);
                     break;
-                case TokenType.IF:					
+                case TokenType.IF:
+                    CompileIf compileIf = new CompileIf(this);
+                    compileIf.compile(part);
+                case TokenType.ELSE:
+                    CompileElse compileElse = new CompileElse(this);
+                    compileElse.compile(part);
                     break;
             }
         }
