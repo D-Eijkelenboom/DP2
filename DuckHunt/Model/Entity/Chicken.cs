@@ -78,6 +78,11 @@ namespace DuckHunt.Model.Entity
 			}
 		}
 
+		public void SlowMotionMove(long slomoStartTime)
+		{
+			this.slowDownActive = true;
+		}
+
 		#region Movement
 		public void getNextPosition()
 		{

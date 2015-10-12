@@ -35,8 +35,8 @@ namespace DuckHunt.Model
 		private long palyTime;
 		public long playTime
 		{
-			get { return playTime; }
-			set { playTime = value; }
+			get { return palyTime; }
+			set { palyTime = value; }
 		}
 
 		public StatusTracker()

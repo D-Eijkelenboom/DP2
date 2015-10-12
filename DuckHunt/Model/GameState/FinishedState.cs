@@ -16,7 +16,7 @@ namespace DuckHunt.Model.GameState
 			this.GSM = gsm;
 
 			gsm.Stats.Bullets = 0;
-			//gsm.Stats.playTime = gsm.Stats.GameTime;
+			gsm.Stats.playTime = (gsm.Stats.GameTime / 1000);
 
 			this.ActionContainer = new ActionContainer();
 
@@ -55,8 +55,8 @@ namespace DuckHunt.Model.GameState
 		public void draw()
 		{
 			string msg = "You Won! Press P to start over!\n";
-			//msg += "Shots fired: " + GSM.Stats.Shots + "\n";
-			//msg += "PlayTime: " + GSM.Stats.playTime;
+			msg += "Shots fired: " + GSM.Stats.Shots + "\n";
+			msg += "PlayTime: " + GSM.Stats.playTime + " sec";
 			this.GSM.GameCanvas.drawStatusLabel(msg);
 		}
 

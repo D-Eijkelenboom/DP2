@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DuckHunt.Model.Entity.EntiyStates
 {
-	interface EntityState
+	public interface EntityState
 	{
 		GameStateManager GSM { get; set; }
 

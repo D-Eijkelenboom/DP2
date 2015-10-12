@@ -6,6 +6,6 @@ namespace DuckHunt.Model.Entity
 		Movable,
 		Shootable,
 		Destroyable,
-		Visible,
+		Visible
 	}
 }

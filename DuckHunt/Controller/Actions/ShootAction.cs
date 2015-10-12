@@ -18,6 +18,8 @@ namespace DuckHunt.Controller.Actions
 
 		public override void execute()
 		{
+			GameState.GSM.Stats.substractBullets();
+			GameState.GSM.Stats.increaseShots();
 			foreach (IShootable e in this.GameState.MainContainer[Behaviour.Shootable])
 			{
 				if (e.IsAlive && e.isHit(this.X, this.Y))

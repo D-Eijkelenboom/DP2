@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DuckHunt.Model.Entity.EntiyStates
 {
-	public enum EntiyStateType
+	public class EntityStateManager
 	{
-		[EntityStateInfoAttribute(typeof(EntitySlowmotionMove))]
-		entityAlive,
-		[EntityStateInfoAttribute(typeof(EntityDaimentMove))]
-		entityDead,
+		public EntityStateManager()
+		{
+
+		}
 	}
 }

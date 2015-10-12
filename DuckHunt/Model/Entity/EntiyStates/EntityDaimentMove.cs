@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DuckHunt.Model.Entity.EntiyStates
 {
-	public class EntityDead : EntityState
+	public class EntityDaimentMove : EntityState
 	{
-		public EntityDead()
+		public EntityDaimentMove()
 		{
 
 		}
@@ -26,7 +26,7 @@ namespace DuckHunt.Model.Entity.EntiyStates
 
 		public void update(double dt)
 		{
-			throw new NotImplementedException();
+			move(dt);
 		}
 
 		public void move(double dt)
