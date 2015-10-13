@@ -71,6 +71,7 @@ namespace DuckHunt.Model.Entity
 			{
 				this.deltaTime = dt;
 				getNextPosition();
+
 				if (slowDownActive)
 					activateSlowDown();
 

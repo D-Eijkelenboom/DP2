@@ -1,5 +1,4 @@
-﻿using DuckHunt.Model.GameState;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DuckHunt.Model.Entity.EntiyStates
 {
-	public abstract class EntityState
+	public class EntityStateDead : EntityState
 	{
 		private EntityStateManager esm;
 		EntityStateManager ESM
@@ -16,19 +15,21 @@ namespace DuckHunt.Model.Entity.EntiyStates
 			set { esm = value; }
 		}
 
-		public virtual void init(EntityStateManager _ESM)
+		public EntityStateDead() { }
+
+		public override void init(EntityStateManager _ESM)
 		{
 			this.ESM = _ESM;
 		}
 
-		public virtual void cleanup()
+		public override void cleanup()
 		{
 			this.ESM = null;
 		}
 
-		public virtual Boolean isHit()
+		public override Boolean isHit()
 		{
-			return true;
+			return false;
 		}
 	}
 }

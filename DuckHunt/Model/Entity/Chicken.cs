@@ -1,5 +1,7 @@
-﻿using DuckHunt.Model.Entity.Interface;
+﻿using DuckHunt.Model.Entity.EntiyStates;
+using DuckHunt.Model.Entity.Interface;
 using System;
+using System.Collections.Generic;
 
 namespace DuckHunt.Model.Entity
 {
@@ -23,6 +25,8 @@ namespace DuckHunt.Model.Entity
 			this.stdMoveSpeed = moveSpeed;
 			this.slowDownActive = false;
 			this.determineDirection();
+
+			this.ESM = new EntityStateManager();
 		}
 
 		public Chicken(double x, double y)
@@ -39,6 +43,8 @@ namespace DuckHunt.Model.Entity
 			this.stdMoveSpeed = moveSpeed;
 			this.slowDownActive = false;
 			this.determineDirection();
+
+			this.ESM = new EntityStateManager();
 		}
 
 		public Chicken(double x, double y, double dx, double dy)
@@ -58,6 +64,8 @@ namespace DuckHunt.Model.Entity
 			this.IsMovable = true;
 			this.IsShootable = true;
 			this.IsVisible = true;
+
+			this.ESM = new EntityStateManager();
 		}
 		#endregion
 
@@ -181,7 +189,9 @@ namespace DuckHunt.Model.Entity
 		{
 			if ((x >= X && x < (Width + X)) && (y > Y && y < (Height + Y)))
 			{
-				isAlive = false;
+				//this.ESM.changeEntityState(null);
+				isAlive = this.ESM.isHit();
+				//isAlive = false;
 				return true;
 			}
 			return false;

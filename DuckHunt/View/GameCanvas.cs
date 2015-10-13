@@ -48,7 +48,7 @@ namespace DuckHunt.View
 			}));
 		}
 
-		public void drawStatusLabel(String message)
+		public void drawStatusLabel(String message, int lblHight = 36)
 		{
 			this.Dispatcher.Invoke(new Action(() =>
 			{
@@ -60,7 +60,7 @@ namespace DuckHunt.View
 				lblStatus.Width = this.MaxWidth;
 				lblStatus.FontSize = 18;
 				lblStatus.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
-				lblStatus.Height = 108;
+				lblStatus.Height = lblHight;
 				Canvas.SetTop(lblStatus, Math.Round(this.MaxHeight / 2) - lblStatus.Height);
 				Canvas.SetZIndex(lblStatus, 150);
 				if (!this.Children.Contains(lblStatus))

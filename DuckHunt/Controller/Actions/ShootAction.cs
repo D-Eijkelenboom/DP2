@@ -22,10 +22,11 @@ namespace DuckHunt.Controller.Actions
 			GameState.GSM.Stats.increaseShots();
 			foreach (IShootable e in this.GameState.MainContainer[Behaviour.Shootable])
 			{
-				if (e.IsAlive && e.isHit(this.X, this.Y))
+				//if (e.IsAlive && e.isHit(this.X, this.Y))
+				if (e.isHit(this.X, this.Y) && !e.IsAlive)
 				{
 					this.GameState.MainContainer.removeEntity((Entity)e);
-					break;
+					break;	
 				}
 			}
 		}

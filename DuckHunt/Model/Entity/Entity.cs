@@ -33,7 +33,7 @@ namespace DuckHunt.Model.Entity
 
 		public List<Behaviour> BehaviourList { get; set; }
 
-		protected EntityState EntitiyState { get; set; }
+		public EntityStateManager ESM { get; set; }
 
 		protected double deltaTime;
 

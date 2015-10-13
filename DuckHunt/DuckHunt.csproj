@@ -55,11 +55,13 @@
     </ApplicationDefinition>
     <Compile Include="Controller\Actions\SlowMotionAction.cs" />
     <Compile Include="Controller\BulletTimeController.cs" />
-    <Compile Include="Model\Entity\EntiyStates\EntitySlowmotionMove.cs" />
-    <Compile Include="Model\Entity\EntiyStates\EntityDaimentMove.cs" />
+    <Compile Include="Model\Entity\EntiyStates\EntityStateDead.cs" />
+    <Compile Include="Model\Entity\EntiyStates\EntityStateFactory.cs" />
+    <Compile Include="Model\Entity\EntiyStates\EntityStateHealthy.cs" />
     <Compile Include="Model\Entity\EntiyStates\EntityState.cs" />
+    <Compile Include="Model\Entity\EntiyStates\EntityStateHurt.cs" />
     <Compile Include="Model\Entity\EntiyStates\EntityStateManager.cs" />
-    <Compile Include="Model\Entity\EntiyStates\EntiyStateType.cs" />
+    <Compile Include="Model\Entity\EntiyStates\EntityStateType.cs" />
     <Compile Include="Model\Entity\EntiyStates\EntityStateInfoAttribute.cs" />
     <Compile Include="Model\GameState\GameOverState.cs" />
     <Compile Include="Model\GameState\MenuState.cs" />
