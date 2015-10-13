@@ -20,6 +20,7 @@ namespace compiler.compileBlocks
         {
             DoNothingNode nothingStart = new DoNothingNode();
             compiler.Nodes.AddLast(nothingStart);
+            compiler.Nodes.Last.Previous.Value.Next = compiler.Nodes.Last.Value;
             
             List<List<Token>> body = compiler.compileBody(tokens);
             foreach (List<Token> bodyPart in body)

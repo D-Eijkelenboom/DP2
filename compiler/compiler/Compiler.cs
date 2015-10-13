@@ -1,4 +1,5 @@
-﻿using compiler.nodes;
+﻿using compiler.compileBlocks;
+using compiler.nodes;
 using Compiler;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace compiler
 {
-    class Compiler
+    public class Compiler
     {
         public Compiler()
         {
@@ -49,10 +50,12 @@ namespace compiler
                         else if (part.Count == 4)
                         {
                             Nodes.AddLast(new DirectFunctionCallNode(part));
+                            Nodes.Last.Previous.Value.Next = Nodes.Last.Value;
                         }
                         else
                         {
                             Nodes.AddLast(new FunctionCallNode(part));
+                            Nodes.Last.Previous.Value.Next = Nodes.Last.Value;
                         }
                     }
                     break;
@@ -63,6 +66,7 @@ namespace compiler
                 case TokenType.IF:
                     CompileIf compileIf = new CompileIf(this);
                     compileIf.compile(part);
+                    break;
                 case TokenType.ELSE:
                     CompileElse compileElse = new CompileElse(this);
                     compileElse.compile(part);

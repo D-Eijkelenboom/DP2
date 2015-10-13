@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace compiler
 {
-    class DirectFunctionCallNode : AbstractFunctionCallNode
+    public class DirectFunctionCallNode : AbstractFunctionCallNode
     {
         public DirectFunctionCallNode(List<Token> tokens)
         {
@@ -15,8 +15,15 @@ namespace compiler
             ReturnValue = tokens[2];
         }
 
+        public override void Accept(NodeVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
         public Token Identifier;
 
         public Token ReturnValue { get; set; }
+
+        public override List<string> Parameters  { get; set; }
     }
 }

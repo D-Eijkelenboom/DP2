@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace compiler.nodes
 {
-    class ConditionNode : Node
+    public class ConditionNode : Node
     {
         public ConditionNode(List<Token> tokens)
         {           
             List<Token> statement = checkCondition(tokens);
-            this.Tokens = statement;
 
             this.LValue = statement[0];
             this.condition = statement[1];
@@ -57,6 +56,11 @@ namespace compiler.nodes
                 }
             }
             return returnValue;
+        }
+
+        public override void Accept(NodeVisitor visitor)
+        {
+            visitor.Visit(this);
         }
 
         public Token LValue { get; set; }

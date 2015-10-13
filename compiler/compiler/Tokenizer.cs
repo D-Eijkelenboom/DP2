@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace compiler
 {
-    class Tokenizer
+    public class Tokenizer
     {
         private TokenType[] OpenTokens;
         private TokenType[] CloseTokens;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Compiler
 {
-    class Token
+    public class Token
     {
         //public Token() { }
 

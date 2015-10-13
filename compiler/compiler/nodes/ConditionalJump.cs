@@ -8,12 +8,17 @@ using System.Threading.Tasks;
 
 namespace compiler
 {
-    class ConditionalJump : Node
+    public class ConditionalJump : Node
     {
         private bool conditionResult;
 
         public ConditionalJump()
         { }
+
+        public override void Accept(NodeVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
 
         public LinkedListNode<Node> OnTrue { get; set; }
 

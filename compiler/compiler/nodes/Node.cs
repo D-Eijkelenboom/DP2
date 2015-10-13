@@ -1,14 +1,16 @@
-﻿using System;
+﻿using Compiler;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Compiler;
 
 namespace compiler
 {
-    class Node
+    public abstract class Node
     {        
-        public List<Token> Tokens { get; set; }
+        public Node Next { get; set; }
+
+        public abstract void Accept(NodeVisitor visitor);
     }
 }

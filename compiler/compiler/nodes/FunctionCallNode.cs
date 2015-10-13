@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace compiler
 {
-    class FunctionCallNode : AbstractFunctionCallNode
+    public class FunctionCallNode : AbstractFunctionCallNode
     {
         public FunctionCallNode(List<Token> tokens)
         {
-            Parameters = new List<Token>();
+            Parameters = new List<string>();
             Identifier = tokens[0];
 
             int max = tokens.Count;
@@ -23,7 +23,7 @@ namespace compiler
 
             for (int i = 2; i < max; i++)
             {
-                this.Parameters.Add(tokens[i]);
+                this.Parameters.Add(tokens[i].Value);
             }
         }
 
@@ -31,30 +31,35 @@ namespace compiler
         {
             if (this.Parameters.Count == 1)
             {
-                ReturnValue = Int32.Parse(Parameters[0].Value.ToString());
+                ReturnValue = Int32.Parse(Parameters[0]);
             }
             else
             {
-                switch (Parameters[1].Type)
+                switch (Parameters[1])
                 {
-                    case TokenType.PLUS:
-                        ReturnValue = Int32.Parse(Parameters[0].Value.ToString()) + Int32.Parse(Parameters[2].Value.ToString());
+                    case "+":
+                        ReturnValue = Int32.Parse(Parameters[0]) + Int32.Parse(Parameters[2]);
                         break;
-                    case TokenType.MINUS:
-                        ReturnValue = Int32.Parse(Parameters[0].Value.ToString()) - Int32.Parse(Parameters[2].Value.ToString());
+                    case "-":
+                        ReturnValue = Int32.Parse(Parameters[0]) - Int32.Parse(Parameters[2]);
                         break;
-                    case TokenType.MULTIPLY:
-                        ReturnValue = Int32.Parse(Parameters[0].Value.ToString()) * Int32.Parse(Parameters[2].Value.ToString());
+                    case "*":
+                        ReturnValue = Int32.Parse(Parameters[0]) * Int32.Parse(Parameters[2]);
                         break;
-                    case TokenType.DIVIDE:
-                        ReturnValue = Int32.Parse(Parameters[0].Value.ToString()) / Int32.Parse(Parameters[2].Value.ToString());
+                    case "/":
+                        ReturnValue = Int32.Parse(Parameters[0]) / Int32.Parse(Parameters[2]);
                         break;
                 }
             }
         }
 
+        public override void Accept(NodeVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
         public Token Identifier;
-        public List<Token> Parameters { get; set; }
+        public override List<string> Parameters { get; set; }
         public int ReturnValue { get; set; }
     }    
 }

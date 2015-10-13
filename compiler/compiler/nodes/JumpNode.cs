@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace compiler
 {
-    class JumpNode : Node
+    public class JumpNode : Node
     {
         public JumpNode(LinkedListNode<Node> jumpToNode)
         {
@@ -20,5 +20,10 @@ namespace compiler
         }
 
         public LinkedListNode<Node> JumpToNode { get; set; }
+
+        public override void Accept(NodeVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
     }
 }

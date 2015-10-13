@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 
 namespace compiler
 {
-    class DoNothingNode : Node
+    public class DoNothingNode : Node
     {
         public DoNothingNode()
         {
 
+        }
+
+        public override void Accept(NodeVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }
