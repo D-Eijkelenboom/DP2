@@ -35,8 +35,6 @@ namespace DuckHunt.Controller
 
 			if (e.ChangedButton == MouseButton.Right)
 			{
-				// TODO: BullitTime
-				Console.WriteLine(" Right mouse button down ");
 				this.GameState.ActionContainer.Enqueue(new SlowMotionAction(this.GameState));
 			}
 

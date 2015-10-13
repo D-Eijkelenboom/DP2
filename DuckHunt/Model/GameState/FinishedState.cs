@@ -57,7 +57,7 @@ namespace DuckHunt.Model.GameState
 			string msg = "You Won! Press P to start over!\n";
 			msg += "Shots fired: " + GSM.Stats.Shots + "\n";
 			msg += "PlayTime: " + GSM.Stats.playTime + " sec";
-			this.GSM.GameCanvas.drawStatusLabel(msg);
+			this.GSM.GameCanvas.drawStatusLabel(msg, lblHight: 108);
 		}
 
 		public void pause()

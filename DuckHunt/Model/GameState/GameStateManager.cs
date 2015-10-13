@@ -7,7 +7,9 @@ namespace DuckHunt.Model.GameState
 	public class GameStateManager
 	{
 		public Game Game { get; set; }
+
 		public GameWindow GameWindow { get; set; }
+
 		public GameCanvas GameCanvas { get; set; }
 
 		public Stack<GameState> GameStates { get; set; }
