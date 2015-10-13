@@ -158,9 +158,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Data\Sound\Blood_Hit.wav" />
-    <Content Include="Data\Sound\Flame woosh.wav" />
-    <Content Include="Data\Sound\Small_Gun_Shot.wav" />
+    <Content Include="Data\Sounds\Blood_Hit.wav" />
+    <Content Include="Data\Sounds\Flame woosh.wav" />
+    <Content Include="Data\Sounds\Small_Gun_Shot.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
