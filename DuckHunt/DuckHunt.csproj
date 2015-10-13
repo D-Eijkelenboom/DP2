@@ -144,12 +144,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\Images\balloon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\Images\chicken.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\Images\gunshot-clipart-bullet-hole-hi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\Images\hitsplat.png" />
+  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="Images\balloon.png" />
-    <Resource Include="Images\chicken.png" />
-    <Resource Include="Images\gunshot-clipart-bullet-hole-hi.png" />
-    <Resource Include="Images\hitsplat.png" />
+    <Content Include="Data\Sound\Blood_Hit.wav" />
+    <Content Include="Data\Sound\Flame woosh.wav" />
+    <Content Include="Data\Sound\Small_Gun_Shot.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

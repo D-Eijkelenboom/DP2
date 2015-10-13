@@ -15,10 +15,10 @@ namespace DuckHunt.View
 		private Label lblFps;
 		private Label lblStatus;
 
-		private BitmapImage chickenImage = new BitmapImage(new Uri("..\\Images\\chicken.png", UriKind.RelativeOrAbsolute));
-		private BitmapImage bulletImage = new BitmapImage(new Uri("..\\Images\\gunshot-clipart-bullet-hole-hi.png", UriKind.RelativeOrAbsolute));
-		private BitmapImage hitsplatImage = new BitmapImage(new Uri("..\\Images\\hitsplat.png", UriKind.RelativeOrAbsolute));
-		private BitmapImage balloonImage = new BitmapImage(new Uri("..\\Images\\balloon.png", UriKind.RelativeOrAbsolute));
+		private BitmapImage chickenImage = new BitmapImage(new Uri("..\\Data\\Images\\chicken.png", UriKind.RelativeOrAbsolute));
+		private BitmapImage bulletImage = new BitmapImage(new Uri("..\\Data\\Images\\gunshot-clipart-bullet-hole-hi.png", UriKind.RelativeOrAbsolute));
+		private BitmapImage hitsplatImage = new BitmapImage(new Uri("..\\Data\\Images\\hitsplat.png", UriKind.RelativeOrAbsolute));
+		private BitmapImage balloonImage = new BitmapImage(new Uri("..\\Data\\Images\\balloon.png", UriKind.RelativeOrAbsolute));
 
 		public GameCanvas()
 			: base()

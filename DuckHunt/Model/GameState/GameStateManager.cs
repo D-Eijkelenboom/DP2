@@ -1,6 +1,7 @@
 ﻿using DuckHunt.Main;
 using DuckHunt.View;
 using System.Collections.Generic;
+using System.Media;
 
 namespace DuckHunt.Model.GameState
 {
@@ -21,6 +22,13 @@ namespace DuckHunt.Model.GameState
 			set { stats = value; }
 		}
 
+		private SoundPlayer sound;
+		public SoundPlayer Sound
+		{
+			get { return sound; }
+			set { sound = value; }
+		}
+
 		public GameStateManager(Game game)
 		{
 			this.Game = game;
@@ -33,6 +41,7 @@ namespace DuckHunt.Model.GameState
 
 			//Model
 			stats = new StatusTracker();
+			Sound = new SoundPlayer();
 
 			GameStates = new Stack<GameState>();
 			this.changeGameState(GameStateFactory.createGameState(GameStateType.menuState));
