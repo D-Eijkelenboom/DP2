@@ -17,6 +17,7 @@ namespace compiler
         {
             CurrentNode = list.First.Value;
             NextNodeVisitor visitor = new NextNodeVisitor();
+            
 
             while (CurrentNode != null)
             {
@@ -24,7 +25,22 @@ namespace compiler
                 // Doe iets met de huidige node: 
                 switch (CurrentNode.GetType().ToString())
                 { 
-
+                    case "compiler.JumpNode":
+                        break;
+                    case "compiler.FunctionCallNode":
+                        FunctionCallNode node = CurrentNode as FunctionCallNode;
+                        setVariable(node.Identifier.Value, string.Empty);
+                        sortParameters(node.Parameters);
+                   
+                        break;
+                    case "compiler.DirectFunctionCallNode":
+                        break;
+                    case "compiler.ConditionNode":
+                        break;
+                    case "compiler.DoNothingNode":
+                        break;
+                    case "compiler.ConditionalJump":
+                        break;
                     default:
                         break;
                 }
@@ -32,6 +48,36 @@ namespace compiler
                 // Bepaal de volgende node: 
                 CurrentNode.Accept(visitor);
                 CurrentNode = visitor.NextNode;
+            }
+        }
+
+        public void sortParameters(List<string> parameters)
+        {
+            Dictionary<string, BaseCommand> commands = new Dictionary<string, BaseCommand>()
+            {
+                {"+", new PlusCommand()},
+                {"-", new MinusCommand()},
+                {"*", new MultiplyCommand()},
+                {"/", new DivideCommand()},
+                {"++", new IncrementCommand()},
+                {"--", new DecrementCommand()}
+            };
+            List<string> operations = new List<string>() { "+", "-", "/", "*", "++", "--" };
+            bool prevWasOperation = false;
+
+            foreach (string param in parameters)
+            {
+                if (operations.Contains(param))
+                {
+                    if (!prevWasOperation)
+                    {
+                        commands[param].Execute(this, parameters);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Compile error: operation already given!");
+                    }
+                }
             }
         }
 

@@ -10,8 +10,6 @@ namespace compiler
 {
     public class ConditionalJump : Node
     {
-        private bool conditionResult;
-
         public ConditionalJump()
         { }
 
@@ -24,7 +22,6 @@ namespace compiler
 
         public LinkedListNode<Node> OnFalse { get; set; }
 
-        public Node NextOnFalse { get; set; }
-
+        public bool Result { get; set; }
     }
 }

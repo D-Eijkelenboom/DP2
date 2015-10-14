@@ -8,7 +8,7 @@ namespace compiler
 {
     class DivideCommand : BaseCommand
     {
-        public DivideCommand(Compiler compiler) : base(compiler) { }
+        public DivideCommand() { }
 
         public override void Execute(VirtualMachine vm, IList<string> parameterNames)
         {

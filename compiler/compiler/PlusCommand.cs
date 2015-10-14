@@ -8,7 +8,7 @@ namespace compiler
 {
     class PlusCommand : BaseCommand
     {
-        public PlusCommand(Compiler compiler) : base(compiler) { }
+        public PlusCommand() { }
 
         public override void Execute(VirtualMachine vm, IList<string> parameterNames)
         {

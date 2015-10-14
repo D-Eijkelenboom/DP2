@@ -9,14 +9,10 @@ namespace compiler
     public abstract class BaseCommand
     {
 
-        public BaseCommand(Compiler compiler)
+        public BaseCommand()
         {
-            Compiler = compiler;
         }        
 
         public abstract void Execute(VirtualMachine vm, IList<string> parameters);
-
-        public Compiler Compiler { get; set; }
-
     }
 }

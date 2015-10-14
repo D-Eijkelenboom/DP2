@@ -8,7 +8,7 @@ namespace compiler
 {
     class MinusCommand : BaseCommand
     {
-        public MinusCommand(Compiler compiler) : base(compiler) { }
+        public MinusCommand() { }
 
         public override void Execute(VirtualMachine vm, IList<string> parameterNames)
         {

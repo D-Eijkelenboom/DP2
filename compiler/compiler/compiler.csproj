@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
     <Compile Include="compiledBlocks\CompiledElse.cs" />
+    <Compile Include="DecrementCommand.cs" />
     <Compile Include="DivideCommand.cs" />
+    <Compile Include="IncrementCommand.cs" />
     <Compile Include="MinusCommand.cs" />
     <Compile Include="MultiplyCommand.cs" />
     <Compile Include="NextNodeVisitor.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="nodes\JumpNode.cs" />
     <Compile Include="nodes\Node.cs" />
     <Compile Include="NodeVisitor.cs" />
+    <Compile Include="OperationCommand.cs" />
     <Compile Include="PlusCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

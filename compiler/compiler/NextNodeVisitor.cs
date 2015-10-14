@@ -20,8 +20,15 @@ namespace compiler
         }
 
         public override void Visit(ConditionalJump node) 
-        { 
-            
+        {
+            if (node.Result)
+            {
+                NextNode = node.OnTrue.Value;
+            }
+            else
+            {
+                NextNode = node.OnFalse.Value;
+            }
         }
  
         public override void Visit(DirectFunctionCallNode node) 

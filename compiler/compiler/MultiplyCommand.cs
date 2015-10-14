@@ -8,7 +8,7 @@ namespace compiler
 {
     class MultiplyCommand : BaseCommand
     {
-        public MultiplyCommand(Compiler compiler) : base(compiler) { }
+        public MultiplyCommand() { }
 
         public override void Execute(VirtualMachine vm, IList<string> parameterNames)
         {
