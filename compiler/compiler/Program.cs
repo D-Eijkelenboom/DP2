@@ -16,6 +16,8 @@ namespace compiler
             Tokenizer tokenizer = new Tokenizer(lines);
             Compiler compiler = new Compiler();
             compiler.compile(tokenizer.getTokens());
+            VirtualMachine vm = new VirtualMachine();
+            vm.Run(compiler.Nodes);
 
 			Console.ReadLine();
         }

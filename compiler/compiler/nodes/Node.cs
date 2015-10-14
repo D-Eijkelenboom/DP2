@@ -11,6 +11,8 @@ namespace compiler
     {        
         public Node Next { get; set; }
 
+        public Node Prev { get; set; }
+
         public abstract void Accept(NodeVisitor visitor);
     }
 }

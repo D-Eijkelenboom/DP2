@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace compiler
 {
-    class PlusCommand : BaseCommand
+    class DivideCommand : BaseCommand
     {
-        public PlusCommand(Compiler compiler) : base(compiler) { }
+        public DivideCommand(Compiler compiler) : base(compiler) { }
 
         public override void Execute(VirtualMachine vm, IList<string> parameterNames)
         {
@@ -19,10 +19,10 @@ namespace compiler
             int var2;
 
             if (Int32.TryParse(variable1, out var1) && Int32.TryParse(variable2, out var2))
-                vm.ReturnValue = (var1 + var2)
+                vm.ReturnValue = (var1 / var2)
                                   .ToString();
             else
-                vm.ReturnValue = variable1 + variable2;
+                Console.WriteLine("Specified operation could not be completed, given variable not a integer");
         }
     }
 }

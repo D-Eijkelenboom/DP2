@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace compiler
 {
-    class PlusCommand : BaseCommand
+    class MinusCommand : BaseCommand
     {
-        public PlusCommand(Compiler compiler) : base(compiler) { }
+        public MinusCommand(Compiler compiler) : base(compiler) { }
 
         public override void Execute(VirtualMachine vm, IList<string> parameterNames)
         {
@@ -19,10 +19,17 @@ namespace compiler
             int var2;
 
             if (Int32.TryParse(variable1, out var1) && Int32.TryParse(variable2, out var2))
-                vm.ReturnValue = (var1 + var2)
+                vm.ReturnValue = (var1 - var2)
                                   .ToString();
             else
-                vm.ReturnValue = variable1 + variable2;
+                if(variable1.Contains(variable2))
+                {
+                    variable1.Replace(variable2, "");
+                }
+                else
+                {
+                    Console.WriteLine("String does not contain substring");
+                }
         }
     }
 }

@@ -21,21 +21,21 @@ namespace compiler
 
         public override void Visit(ConditionalJump node) 
         { 
-        
+            
         }
  
         public override void Visit(DirectFunctionCallNode node) 
         {
-        
+            NextNode = node.Next;
         }
         public override void Visit(FunctionCallNode node)
         {
-
+            NextNode = node.Next;
         }
 
         public override void Visit(nodes.ConditionNode node)
         {
-            throw new NotImplementedException();
+            NextNode = node.Next;
         }
  
         public Node NextNode { get; private set; }

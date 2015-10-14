@@ -15,17 +15,23 @@ namespace compiler
 
         public void Run(LinkedList<Node> list)
         {
-            Node currentNode = list.First.Value;
+            CurrentNode = list.First.Value;
             NextNodeVisitor visitor = new NextNodeVisitor();
 
-            while (currentNode != null)
+            while (CurrentNode != null)
             {
+                Console.WriteLine(CurrentNode.GetType().ToString());
                 // Doe iets met de huidige node: 
-                //          Command pattern
+                switch (CurrentNode.GetType().ToString())
+                { 
+
+                    default:
+                        break;
+                }
 
                 // Bepaal de volgende node: 
-                currentNode.Accept(visitor);
-                currentNode = visitor.NextNode;
+                CurrentNode.Accept(visitor);
+                CurrentNode = visitor.NextNode;
             }
         }
 
@@ -49,5 +55,7 @@ namespace compiler
         public string ReturnValue { get; set; }
 
         public Dictionary<string, string> Variables { get; set; }
+
+        public Node CurrentNode { get; set; }
     }
 }

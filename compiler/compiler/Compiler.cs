@@ -51,11 +51,13 @@ namespace compiler
                         {
                             Nodes.AddLast(new DirectFunctionCallNode(part));
                             Nodes.Last.Previous.Value.Next = Nodes.Last.Value;
+                            Nodes.Last.Value.Prev = Nodes.Last.Previous.Value;
                         }
                         else
                         {
                             Nodes.AddLast(new FunctionCallNode(part));
                             Nodes.Last.Previous.Value.Next = Nodes.Last.Value;
+                            Nodes.Last.Value.Prev = Nodes.Last.Previous.Value;
                         }
                     }
                     break;

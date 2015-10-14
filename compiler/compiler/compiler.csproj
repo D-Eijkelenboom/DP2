@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="BaseCommand.cs" />
     <Compile Include="compiledBlocks\CompiledElse.cs" />
+    <Compile Include="DivideCommand.cs" />
+    <Compile Include="MinusCommand.cs" />
+    <Compile Include="MultiplyCommand.cs" />
     <Compile Include="NextNodeVisitor.cs" />
     <Compile Include="nodes\AbstractFunctionCallNode.cs" />
     <Compile Include="compiledBlocks\CompiledIf.cs" />
