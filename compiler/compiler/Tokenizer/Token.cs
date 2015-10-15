@@ -31,5 +31,9 @@ namespace compiler
         public int Level { get; set; }
 
         public Token Partner { get; set; }
+
+        public Token Prev { get; set; }
+
+        public Token Next { get; set; }
     }
 }

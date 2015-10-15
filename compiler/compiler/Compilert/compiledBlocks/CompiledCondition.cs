@@ -8,12 +8,17 @@ namespace compiler.compileBlocks
 {
     public class CompiledCondition : CompiledStatement
     {
+        public CompiledCondition()
+        {
+            Compiled = new LinkedList<Node>();
+        }
+
         public override CompiledStatement Clone()
         {
             return new CompiledCondition();
         }
 
-        public override void Compile(ref LinkedListNode<Token> currentToken)
+        public override void Compile(Token currentToken)
         {
             // x == 2
             // y >= 0
@@ -21,40 +26,56 @@ namespace compiler.compileBlocks
             // etc
             // even kort door de bocht.
 
-            Token leftToken = currentToken.Value;
+            Token leftToken = currentToken;
             string leftName = leftToken.Value;
             currentToken = currentToken.Next;
-            Token operatorToken = currentToken.Value;
+            Token operatorToken = currentToken;
             currentToken = currentToken.Next;
-            Token rightToken = currentToken.Value;
+            Token rightToken = currentToken;
             string rightName = rightToken.Value;
 
             if(leftToken.Type != TokenType.IDENTIFIER)
             {
                 leftName = base.GetNextUniqueId();
-                Compiled.Add(new DirectFunctionCallNode("ConstantToReturn", leftToken.Value));
-                Compiled.Add(new DirectFunctionCallNode("ReturnToVariable", leftName));
+                Compiled.AddLast(new DirectFunctionCallNode("ConstantToReturn", leftToken.Value));
+                if (Compiled.Count > 1)
+                    Compiled.Last.Previous.Value.Next = Compiled.Last.Value;
+                Compiled.AddLast(new DirectFunctionCallNode("ReturnToVariable", leftName));
+                if (Compiled.Count > 1)
+                    Compiled.Last.Previous.Value.Next = Compiled.Last.Value;
             }
             if (rightToken.Type != TokenType.IDENTIFIER)
             {
                 rightName = base.GetNextUniqueId();
-                Compiled.Add(new DirectFunctionCallNode("ConstantToReturn", rightToken.Value));
-                Compiled.Add(new DirectFunctionCallNode("ReturnToVariable", rightName));
+                Compiled.AddLast(new DirectFunctionCallNode("ConstantToReturn", rightToken.Value));
+                if (Compiled.Count > 1)
+                    Compiled.Last.Previous.Value.Next = Compiled.Last.Value;
+                Compiled.AddLast(new DirectFunctionCallNode("ReturnToVariable", rightName));
+                if (Compiled.Count > 1)
+                    Compiled.Last.Previous.Value.Next = Compiled.Last.Value;
             }
 
             switch (operatorToken.Type)
             {
                 case TokenType.COMPARE:
-                    Compiled.Add(new FunctionCallNode("AreEqual", new List<string>() {leftName, rightName}));
+                    Compiled.AddLast(new FunctionCallNode("AreEqual", new List<string>() { leftName, rightName }));
+                    if (Compiled.Count > 1)
+                        Compiled.Last.Previous.Value.Next = Compiled.Last.Value;
                     break;
                 case TokenType.NOTEQUALS:
-                    Compiled.Add(new FunctionCallNode("NotEqual", new List<string>() { leftName, rightName }));
+                    Compiled.AddLast(new FunctionCallNode("NotEqual", new List<string>() { leftName, rightName }));
+                    if (Compiled.Count > 1)
+                        Compiled.Last.Previous.Value.Next = Compiled.Last.Value;
                     break;
                 case TokenType.LESSEREQUALS:
-                    Compiled.Add(new FunctionCallNode("LesserEqual", new List<string>() { leftName, rightName }));
+                    Compiled.AddLast(new FunctionCallNode("LesserEqual", new List<string>() { leftName, rightName }));
+                    if (Compiled.Count > 1)
+                        Compiled.Last.Previous.Value.Next = Compiled.Last.Value;
                     break;
                 case TokenType.GREATEREQUALS:
-                    Compiled.Add(new FunctionCallNode("GreaterEqual", new List<string>() { leftName, rightName }));
+                    Compiled.AddLast(new FunctionCallNode("GreaterEqual", new List<string>() { leftName, rightName }));
+                    if (Compiled.Count > 1)
+                        Compiled.Last.Previous.Value.Next = Compiled.Last.Value;
                     break;
                 default:
                     break;
@@ -62,10 +83,10 @@ namespace compiler.compileBlocks
             
         }
 
-        public override bool IsMatch(LinkedListNode<Token> currentToken)
+        public override bool IsMatch(Token currentToken)
         {
             bool value = false;
-            if(currentToken.Next.Value.Type == TokenType.COMPARE || currentToken.Next.Value.Type == TokenType.NOTEQUALS || currentToken.Next.Value.Type == TokenType.GREATEREQUALS || currentToken.Next.Value.Type == TokenType.LESSEREQUALS)
+            if(currentToken.Next.Type == TokenType.COMPARE || currentToken.Next.Type == TokenType.NOTEQUALS || currentToken.Next.Type == TokenType.GREATEREQUALS || currentToken.Next.Type == TokenType.LESSEREQUALS)
             {
                 value = true;
             }
@@ -73,6 +94,6 @@ namespace compiler.compileBlocks
             return value;
         }
 
-        public List<Node> Compiled { get; set; }
+        public LinkedList<Node> Compiled { get; set; }
     }    
 }

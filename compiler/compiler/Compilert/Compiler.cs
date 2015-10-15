@@ -1,4 +1,5 @@
 ﻿using compiler.compileBlocks;
+using compiler.Compilert.compiledBlocks;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -53,9 +54,16 @@ namespace compiler
                         }
                         else
                         {
-                            Nodes.AddLast(new FunctionCallNode(part));
-                            Nodes.Last.Previous.Value.Next = Nodes.Last.Value;
-                            Nodes.Last.Value.Prev = Nodes.Last.Previous.Value;
+                            CompiledAssignment compiledAssignment = new CompiledAssignment();
+                            compiledAssignment.Compile(part[0]);
+                            while (compiledAssignment.Compiled.Count > 0) 
+                            {
+                                LinkedListNode<Node> node = compiledAssignment.Compiled.First;
+                                compiledAssignment.Compiled.RemoveFirst();
+                                Nodes.AddLast(node);
+                                Nodes.Last.Previous.Value.Next = Nodes.Last.Value;
+                                Nodes.Last.Value.Prev = Nodes.Last.Previous.Value;
+                            }
                         }
                     }
                     break;

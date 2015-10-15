@@ -10,7 +10,9 @@ namespace compiler
     public class ConditionalJump : Node
     {
         public ConditionalJump()
-        { }
+        {
+            Result = false;
+        }
 
         public override void Accept(NodeVisitor visitor)
         {

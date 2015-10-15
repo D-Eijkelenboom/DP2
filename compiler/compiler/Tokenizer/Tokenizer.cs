@@ -149,6 +149,12 @@ namespace compiler
                         case "/":
                             tokens.Add(new Token(lineNr, posNr, TokenType.DIVIDE, "/", level, null));
                             break;
+                        case "++":
+                            tokens.Add(new Token(lineNr, posNr, TokenType.INCREMENT, "++", level, null));
+                            break;
+                        case "--":
+                            tokens.Add(new Token(lineNr, posNr, TokenType.DECREMENT, "--", level, null));
+                            break;
                         default:
                             string temp = Regex.Replace(words[i], @";", "");
                             int value;
@@ -170,7 +176,21 @@ namespace compiler
                 Console.WriteLine("Compile error: \"} or ) \" missing!");
             }
 
+            connectTokens();
+
             return tokens;
+        }
+
+        public void connectTokens()
+        {
+            for (int i = 0; i < tokens.Count - 1; i++)
+            {
+                if (i < tokens.Count - 1)
+                {
+                    tokens[i].Next = tokens[i + 1];
+                    tokens[i + 1].Prev = tokens[i];
+                }
+            }
         }
 
         public List<Token> getTokens()

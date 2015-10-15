@@ -12,7 +12,6 @@ namespace compiler
 
         public CompiledStatement()
         { 
-            
         }
 
         public virtual CompiledStatement Clone()
@@ -20,12 +19,17 @@ namespace compiler
             return new CompiledStatement();
         }
 
-        public virtual void Compile(ref LinkedListNode<Token> currentToken)
+        public virtual void Compile(Token currentToken)
         { 
         
         }
 
-        public virtual bool IsMatch(LinkedListNode<Token> currentToken)
+        public virtual void Compile(List<Token> tokens)
+        {
+
+        }
+
+        public virtual bool IsMatch(Token currentToken)
         {
             return false;
         }

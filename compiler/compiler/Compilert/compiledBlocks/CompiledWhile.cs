@@ -1,4 +1,5 @@
-﻿using compiler.nodes;
+﻿using compiler.compileBlocks;
+using compiler.nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,16 @@ namespace compiler
             compiler.Nodes.Last.Previous.Value.Next = compiler.Nodes.Last.Value;
             LinkedListNode<Node> nothingStartNode = compiler.Nodes.Last;
 
-            ConditionNode condition = new ConditionNode(tokens);
-            compiler.Nodes.AddLast(condition);
-            compiler.Nodes.Last.Previous.Value.Next = compiler.Nodes.Last.Value;
+            CompiledCondition condition = new CompiledCondition();
+            condition.Compile(tokens[0]);
+            while (condition.Compiled.Count > 0)
+            {
+                LinkedListNode<Node> node = condition.Compiled.First;
+                condition.Compiled.RemoveFirst();
+                compiler.Nodes.AddLast(node);
+                compiler.Nodes.Last.Previous.Value.Next = compiler.Nodes.Last.Value;
+                compiler.Nodes.Last.Value.Prev = compiler.Nodes.Last.Previous.Value;
+            }
 
             ConditionalJump conditionalJump = new ConditionalJump();
             compiler.Nodes.AddLast(conditionalJump);

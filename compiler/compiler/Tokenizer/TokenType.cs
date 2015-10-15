@@ -26,6 +26,8 @@ namespace compiler
         PLUS,
         MULTIPLY,
         DIVIDE,
+        INCREMENT,
+        DECREMENT,
         NUMBER,
         IDENTIFIER
     }
