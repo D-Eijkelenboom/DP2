@@ -13,17 +13,35 @@ namespace compiler
         public FunctionCallNode(List<Token> tokens)
         {
             Parameters = new List<string>();
+            Identifier = tokens[0].Value;
 
-            int max = tokens.Count;
-            if (tokens[tokens.Count - 1].Type == TokenType.SEMICOLON)
-            {
-                max = tokens.Count - 1;
-            }
+            string operation = tokens[1].Value;
 
-            for (int i = 0; i < max; i++)
-            {
-                this.Parameters.Add(tokens[i].Value);
+            switch (operation)
+            { 
+                case "+":
+                    Parameters.Add("PLUS");                    
+                    break;
+                case "-":
+                    Parameters.Add("MINUS");
+                    break;
+                case "*":
+                    Parameters.Add("MULTIPLY");
+                    break;
+                case "/":
+                    Parameters.Add("DIVIDE");
+                    break;
+                case "++":
+                    Parameters.Add("INCREMENT");
+                    break;
+                case "--":
+                    Parameters.Add("DECREMENT");
+                    break;
+                default:
+                    break;
             }
+            Parameters.Add(tokens[0].Value);
+            Parameters.Add(tokens[2].Value);
         }
         
         public override void Accept(NodeVisitor visitor)
@@ -31,7 +49,6 @@ namespace compiler
             visitor.Visit(this);
         }
 
-        public Token Identifier;
         public override List<string> Parameters { get; set; }
         public int ReturnValue { get; set; }
     }    

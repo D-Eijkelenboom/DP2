@@ -11,18 +11,14 @@ namespace compiler
     {
         public DirectFunctionCallNode(List<Token> tokens)
         {
-            Identifier = tokens[0];
-            ReturnValue = tokens[2];
+            Identifier = tokens[0].Value;
+            Parameters = new List<string>() { "V2R", tokens[0].Value, tokens[2].Value};
         }
 
         public override void Accept(NodeVisitor visitor)
         {
             visitor.Visit(this);
         }
-
-        public Token Identifier;
-
-        public Token ReturnValue { get; set; }
 
         public override List<string> Parameters  { get; set; }
     }

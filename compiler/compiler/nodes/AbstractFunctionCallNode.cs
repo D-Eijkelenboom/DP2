@@ -10,5 +10,7 @@ namespace compiler
     public abstract class AbstractFunctionCallNode : Node
     {
         public abstract List<string> Parameters { get; set; }
+
+        public string Identifier { get; set; }
     }
 }
