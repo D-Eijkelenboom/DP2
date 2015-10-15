@@ -1,5 +1,4 @@
-﻿using Compiler;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +8,12 @@ namespace compiler
 {
     public class DirectFunctionCallNode : AbstractFunctionCallNode
     {
-        public DirectFunctionCallNode(List<Token> tokens)
+        public DirectFunctionCallNode(string variableName, string param)
         {
-            Identifier = tokens[0].Value;
-            Parameters = new List<string>() { "V2R", tokens[0].Value, tokens[2].Value};
+            Parameters = new List<string>();
+
+            Parameters.Add(variableName);
+            Parameters.Add(param);
         }
 
         public override void Accept(NodeVisitor visitor)

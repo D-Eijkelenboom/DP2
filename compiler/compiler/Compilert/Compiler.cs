@@ -1,6 +1,4 @@
 ﻿using compiler.compileBlocks;
-using compiler.nodes;
-using Compiler;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -49,7 +47,7 @@ namespace compiler
                         }
                         else if (part.Count == 4)
                         {
-                            Nodes.AddLast(new DirectFunctionCallNode(part));
+                            Nodes.AddLast(new FunctionCallNode("ConstantToVariable", new List<string>() {part[0].Value, part[2].Value}));
                             Nodes.Last.Previous.Value.Next = Nodes.Last.Value;
                             Nodes.Last.Value.Prev = Nodes.Last.Previous.Value;
                         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using compiler.VM;
 
 namespace compiler
 {
@@ -19,8 +20,13 @@ namespace compiler
                 {"DIVIDE", new DivideCommand()},
                 {"INCREMENT", new IncrementCommand()},
                 {"DECREMENT", new DecrementCommand()},
-                {"V2R", new ValueToReturnCommand()}
-
+                {"ConstantToVariable", new ConstantToVariableCommand()},
+                {"ConstantToReturn", new ConstantToReturnCommand()},
+                {"ReturnToVariable", new ReturnToVariableCommand()},
+                {"AreEqual", new AreEqualCommand()},
+                {"NotEqual", new NotEqualCommand()},
+                {"LesserEqual", new LesserEqualCommand()},
+                {"GreaterEqual", new GreaterEqualCommand()}
             };
         }
 

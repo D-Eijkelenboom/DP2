@@ -1,6 +1,4 @@
-﻿
-using Compiler;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +8,9 @@ namespace compiler
 {
     public class FunctionCallNode : AbstractFunctionCallNode
     {
+        private string p;
+        private List<string> list;
+
         public FunctionCallNode(List<Token> tokens)
         {
             Parameters = new List<string>();
@@ -42,6 +43,12 @@ namespace compiler
             }
             Parameters.Add(tokens[0].Value);
             Parameters.Add(tokens[2].Value);
+        }
+
+        public FunctionCallNode(string variableName, List<string> parameters)
+        {
+            Parameters.Add(variableName);
+            Parameters.AddRange(parameters);
         }
         
         public override void Accept(NodeVisitor visitor)
