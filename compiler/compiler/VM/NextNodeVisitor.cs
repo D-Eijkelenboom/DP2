@@ -7,7 +7,13 @@ using System.Threading.Tasks;
 namespace compiler
 {
     public class NextNodeVisitor : NodeVisitor
-    {     
+    {
+        private VirtualMachine virtualMachine;
+
+        public NextNodeVisitor(VirtualMachine vm)
+        {
+            virtualMachine = vm;
+        }
 
         public override void Visit(DoNothingNode node) 
         {
@@ -21,7 +27,7 @@ namespace compiler
 
         public override void Visit(ConditionalJump node) 
         {
-            if (node.Result)
+           if ( Convert.ToBoolean(virtualMachine.ReturnValue))
             {
                 NextNode = node.OnTrue.Value;
             }

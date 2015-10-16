@@ -126,7 +126,7 @@ namespace compiler
                             tokens.Add(new Token(lineNr, posNr, TokenType.EQUALS, "=", level, null));
                             break;
                         case "==":
-                            tokens.Add(new Token(lineNr, posNr, TokenType.COMPARE, "=", level, null));
+                            tokens.Add(new Token(lineNr, posNr, TokenType.COMPARE, "==", level, null));
                             break;
                         case "<=":
                             tokens.Add(new Token(lineNr, posNr, TokenType.LESSEREQUALS, "<=", level, null));

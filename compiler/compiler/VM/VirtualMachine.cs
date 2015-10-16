@@ -33,7 +33,7 @@ namespace compiler
         public void Run(LinkedList<Node> list)
         {
             CurrentNode = list.First.Value;
-            NextNodeVisitor visitor = new NextNodeVisitor();
+            NextNodeVisitor visitor = new NextNodeVisitor(this);
             
             while (CurrentNode != null)
             {

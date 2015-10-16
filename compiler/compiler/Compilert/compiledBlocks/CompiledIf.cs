@@ -26,7 +26,7 @@ namespace compiler
             LinkedListNode<Node> nothingStartNode = compiler.Nodes.Last;
 
             CompiledCondition condition = new CompiledCondition();
-            condition.Compile(tokens[0]);
+            condition.Compile(tokens[2]);
             while (condition.Compiled.Count > 0)
             {
                 LinkedListNode<Node> node = condition.Compiled.First;

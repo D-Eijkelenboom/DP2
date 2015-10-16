@@ -80,7 +80,6 @@ namespace compiler.compileBlocks
                 default:
                     break;
             }
-            
         }
 
         public override bool IsMatch(Token currentToken)
