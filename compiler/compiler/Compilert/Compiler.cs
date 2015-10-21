@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using compiler.Compilert;
 
 namespace compiler
 {
@@ -78,6 +79,18 @@ namespace compiler
                 case TokenType.ELSE:
                     CompileElse compileElse = new CompileElse(this);
                     compileElse.compile(part);
+                    break;
+                case TokenType.PRINT:
+                    CompiledPrint compilePrint = new CompiledPrint(this);
+                    compilePrint.compile(part[0]);
+                    while (compilePrint.Compiled.Count > 0)
+                    {
+                        LinkedListNode<Node> node = compilePrint.Compiled.First;
+                        compilePrint.Compiled.RemoveFirst();
+                        Nodes.AddLast(node);
+                        Nodes.Last.Previous.Value.Next = Nodes.Last.Value;
+                        Nodes.Last.Value.Prev = Nodes.Last.Previous.Value;
+                    }
                     break;
             }
         }

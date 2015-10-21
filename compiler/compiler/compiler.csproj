@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Compilert\compiledBlocks\CompiledAssignment.cs" />
     <Compile Include="Compilert\compiledBlocks\CompiledStatement.cs" />
+    <Compile Include="Compilert\CompiledPrint.cs" />
     <Compile Include="VM\Commands\AreEqualCommand.cs" />
     <Compile Include="VM\Commands\BaseCommand.cs" />
     <Compile Include="Compilert\compiledBlocks\CompiledElse.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="VM\Commands\ConstantToVariableCommand.cs" />
     <Compile Include="VM\Commands\GreaterEqualCommand.cs" />
     <Compile Include="VM\Commands\LesserEqualCommand.cs" />
+    <Compile Include="VM\Commands\PrintCommand.cs" />
     <Compile Include="VM\NextNodeVisitor.cs" />
     <Compile Include="Compilert\nodes\AbstractFunctionCallNode.cs" />
     <Compile Include="Compilert\compiledBlocks\CompiledIf.cs" />

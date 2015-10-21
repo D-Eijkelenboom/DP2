@@ -9,4 +9,10 @@ while ( x >= 0 )
 if ( y == 37 )
 {
 	y = 40 ;
+	print ( y ) ;
+}
+else
+{
+	print ( x ) ;
+	print ( y ) ;
 }

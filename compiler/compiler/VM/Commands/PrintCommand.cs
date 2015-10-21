@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace compiler
+namespace compiler.VM.Commands
 {
-    class AreEqualCommand : BaseCommand
+    class PrintCommand : BaseCommand
     {
         public override void Execute(VirtualMachine vm, IList<string> parameters)
         {
-            vm.ReturnValue = Convert.ToString(vm.getVariable(parameters[1]) == vm.getVariable(parameters[2]));
+            Console.WriteLine(vm.getVariable(parameters[1]));
         }
     }
 }

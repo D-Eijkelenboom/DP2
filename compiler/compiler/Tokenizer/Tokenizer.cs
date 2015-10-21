@@ -59,7 +59,10 @@ namespace compiler
                 for (int i = 0; i < words.Length; i++)
                 {
                     switch (words[i])
-                    { 
+                    {
+                        case "print":
+                            tokens.Add(new Token(lineNr, posNr, TokenType.PRINT, "print", level, null));
+                            break;
                         case "for":
                             tokens.Add(new Token(lineNr, posNr, TokenType.FOR, "for", level, null));
                             break;

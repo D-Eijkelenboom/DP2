@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using compiler.VM;
+using compiler.VM.Commands;
 
 namespace compiler
 {
@@ -26,7 +27,8 @@ namespace compiler
                 {"AreEqual", new AreEqualCommand()},
                 {"NotEqual", new NotEqualCommand()},
                 {"LesserEqual", new LesserEqualCommand()},
-                {"GreaterEqual", new GreaterEqualCommand()}
+                {"GreaterEqual", new GreaterEqualCommand()},
+                {"Print", new PrintCommand()}
             };
         }
 

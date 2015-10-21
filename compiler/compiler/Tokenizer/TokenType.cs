@@ -8,6 +8,7 @@ namespace compiler
 {
     public enum TokenType
     {
+        PRINT,
         WHILE,
         FOR,
         IF,

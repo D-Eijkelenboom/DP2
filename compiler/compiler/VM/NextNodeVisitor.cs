@@ -50,7 +50,7 @@ namespace compiler
         {
             NextNode = node.Next;
         }
- 
+
         public Node NextNode { get; private set; }
         
     }
